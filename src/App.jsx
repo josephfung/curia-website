@@ -88,7 +88,7 @@ const CapabilitiesSection = () => {
       n: '04',
       title: 'Extensibility.',
       bullets: [
-        '65+ built-in skills',
+        '90+ built-in skills',
         'Build your own agents and skills',
         'YAML-based agent definition — no deep coding required',
         'Model Context Protocol (MCP) integration',
@@ -243,16 +243,16 @@ const GetStartedSection = () => (
             <a className="m-cta m-cta-ghost" href="https://github.com/josephfung/curia#quickstart">Read the quickstart</a>
           </div>
           <div className="m-getstarted-note">
-            MIT-licensed · Self-host on your own infrastructure · CLI-based onboarding
+            MIT-licensed · Self-host on your own infrastructure · Browser-based setup
           </div>
         </div>
         <div className="m-prereqs">
           <div className="m-prereqs-title">Prerequisites</div>
           <ul className="m-prereqs-list">
-            <li><span className="m-mono">node</span><span>≥ 20.x</span></li>
-            <li><span className="m-mono">postgresql</span><span>≥ 15</span></li>
-            <li><span className="m-mono">api keys</span><span>LLM provider of choice</span></li>
-            <li><span className="m-mono">channels</span><span>email, Signal, HTTP, CLI</span></li>
+            <li><span className="m-mono">node</span><span>≥ 22</span></li>
+            <li><span className="m-mono">docker</span><span>Postgres + pgvector</span></li>
+            <li><span className="m-mono">pnpm</span><span>package manager</span></li>
+            <li><span className="m-mono">api key</span><span>Anthropic</span></li>
           </ul>
           <div className="m-prereqs-cmd">
             <span className="ts">$</span>
@@ -260,7 +260,7 @@ const GetStartedSection = () => (
           </div>
           <div className="m-prereqs-cmd">
             <span className="ts">$</span>
-            <span>cd curia &amp;&amp; ./bin/curia init</span>
+            <span>cd curia &amp;&amp; pnpm run setup</span>
           </div>
         </div>
       </div>
