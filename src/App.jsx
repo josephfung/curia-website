@@ -507,7 +507,11 @@ const PrivacyPage = () => (
 
 // Tiny path-based router — no router dependency for a two-page static site.
 // Trailing slashes are normalized so /privacy and /privacy/ both match.
-// Cloudflare serves index.html for /privacy via public/_redirects, then this runs.
+// Cloudflare Pages serves index.html for unmatched paths via its default SPA
+// fallback (active because there's no top-level 404.html), then this runs. We
+// deliberately do NOT ship a _redirects file: a `/privacy /index.html 200`
+// rewrite there gets canonicalized into a 308 redirect to /, which sent the
+// real /privacy URL to the homepage instead of the privacy page.
 const App = () => {
   const path = window.location.pathname.replace(/\/+$/, '');
   return path === '/privacy' ? <PrivacyPage /> : <MarketingPage />;
