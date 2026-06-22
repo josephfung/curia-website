@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
 
-const MarketingHeader = () => (
+// `home` controls how in-page anchors resolve: on the marketing page they stay
+// local (#section); on a standalone route like /privacy they jump back to the
+// homepage (/#section) so the shared header/footer work from anywhere.
+const MarketingHeader = ({ home = true }) => (
   <header className="m-header">
     <div className="m-container m-header-inner">
-      <a className="m-wordmark" href="#" aria-label="Curia">
+      <a className="m-wordmark" href={home ? '#' : '/'} aria-label="Curia">
         <img src="/assets/logo-curia-wordmark.svg" alt="Curia" width="105" height="24" />
       </a>
       <nav className="m-nav" aria-label="Primary">
-        <a href="#capabilities">Capabilities</a>
-        <a href="#governance">Governance</a>
-        <a href="#get-started">Get started</a>
+        <a href={home ? '#capabilities' : '/#capabilities'}>Capabilities</a>
+        <a href={home ? '#governance' : '/#governance'}>Governance</a>
+        <a href={home ? '#get-started' : '/#get-started'}>Get started</a>
       </nav>
       <div className="m-header-actions">
         <a className="m-cta m-cta-ghost" href="https://docs.meetcuria.com">
@@ -364,12 +367,12 @@ const FaqSection = () => {
   );
 };
 
-const MarketingFooter = () => (
+const MarketingFooter = ({ home = true }) => (
   <footer className="m-footer">
     <div className="m-container">
       <div className="m-footer-grid">
         <div>
-          <a className="m-wordmark" href="#" aria-label="Curia">
+          <a className="m-wordmark" href={home ? '#' : '/'} aria-label="Curia">
             <img src="/assets/logo-curia-wordmark.svg" alt="Curia" width="96" height="22" />
           </a>
           <p className="m-pillar-body" style={{ marginTop: 18, maxWidth: 320 }}>
@@ -382,15 +385,15 @@ const MarketingFooter = () => (
         </div>
         <div className="m-footer-col">
           <div className="m-footer-col-title">Product</div>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#governance">Governance</a>
-          <a href="#get-started">Get started</a>
+          <a href={home ? '#capabilities' : '/#capabilities'}>Capabilities</a>
+          <a href={home ? '#governance' : '/#governance'}>Governance</a>
+          <a href={home ? '#get-started' : '/#get-started'}>Get started</a>
         </div>
         <div className="m-footer-col">
           <div className="m-footer-col-title">Office</div>
           {/* <a href="#managed">Managed practice</a> */}
           <a href="https://calendly.com/josephfung">Start a conversation</a>
-          <a href="#faq">FAQ</a>
+          <a href={home ? '#faq' : '/#faq'}>FAQ</a>
         </div>
         <div className="m-footer-col">
           <div className="m-footer-col-title">Open source</div>
@@ -401,13 +404,21 @@ const MarketingFooter = () => (
       </div>
       <div className="m-footer-finepct">
         <span>© {new Date().getFullYear()} <a href="https://linkedin.com/in/josephfung" className="m-footer-author-link">Joseph Fung</a></span>
-        <span>Terms · Privacy · Audit policy</span>
+        {/* "License" → the repo's MIT LICENSE (the real legal instrument for OSS);
+            "Security" → the repo's SECURITY.md; "Privacy" → the in-app /privacy page. */}
+        <span className="m-footer-legal">
+          <a href="https://github.com/josephfung/curia/blob/main/LICENSE">License</a>
+          {' · '}
+          <a href="/privacy">Privacy</a>
+          {' · '}
+          <a href="https://github.com/josephfung/curia/blob/main/SECURITY.md">Security</a>
+        </span>
       </div>
     </div>
   </footer>
 );
 
-const App = () => (
+const MarketingPage = () => (
   <>
     <MarketingHeader />
     <Hero />
@@ -419,5 +430,87 @@ const App = () => (
     <MarketingFooter />
   </>
 );
+
+const PrivacyPage = () => (
+  <>
+    <MarketingHeader home={false} />
+    <main className="m-section">
+      <div className="m-container m-legal">
+        <div className="m-section-eyebrow">Legal</div>
+        <h1 className="m-section-title">Privacy</h1>
+        <p className="m-legal-updated">Last updated June 22, 2026</p>
+
+        <p className="m-legal-lede">
+          Curia is open-source software you run on your own infrastructure. This page
+          covers two things: how the website at meetcuria.com handles your data, and
+          what that means for the Curia software itself.
+        </p>
+
+        <h2 className="m-legal-h">The website</h2>
+        <p>This site is a static marketing page. It does not track you.</p>
+        <ul className="m-legal-list">
+          <li><strong>No analytics.</strong> We don&rsquo;t use Google Analytics, Plausible, or
+            any other tracking tool. We don&rsquo;t know who you are or that you visited.</li>
+          <li><strong>No cookies.</strong> The site sets none.</li>
+          <li><strong>No third-party trackers or ad tech.</strong> Fonts are self-hosted, so your
+            browser doesn&rsquo;t call out to Google or any other CDN when the page loads.</li>
+        </ul>
+        <p>
+          The site is hosted on Cloudflare Pages. Like any web host, Cloudflare processes
+          standard request data (such as your IP address) to deliver the site and protect it
+          from abuse, governed by{' '}
+          <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare&rsquo;s privacy policy</a>.
+          We don&rsquo;t receive or store this ourselves.
+        </p>
+
+        <h2 className="m-legal-h">When you contact us</h2>
+        <p>The only personal information we ever hold is what you choose to send us:</p>
+        <ul className="m-legal-list">
+          <li><strong>Email.</strong> If you email us, we keep your message and address to reply.
+            Nothing more.</li>
+          <li><strong>Booking a call.</strong> The &ldquo;Start a conversation&rdquo; link uses{' '}
+            <a href="https://calendly.com/">Calendly</a>, a third party. If you book, the name,
+            email, and time you provide go to Calendly under{' '}
+            <a href="https://calendly.com/privacy">their privacy policy</a>. We see only the
+            details needed to meet with you.</li>
+        </ul>
+        <p>
+          We don&rsquo;t sell your information, share it with advertisers, or use it for anything
+          beyond responding to you.
+        </p>
+
+        <h2 className="m-legal-h">The Curia software</h2>
+        <p>
+          This is the important part. Curia is self-hosted: you clone it, run it on your own
+          machines, and connect your own accounts and API keys.{' '}
+          <strong>Your email, calendar, contacts, and everything Curia processes stay on your
+          infrastructure.</strong> We are the maintainer of the software, not the operator of
+          your instance. We never receive, see, or store any data Curia handles for you. How
+          that data is treated is governed by your own setup and the providers you connect
+          (your LLM provider, email host, and so on), not by us.
+        </p>
+
+        <h2 className="m-legal-h">Questions</h2>
+        <p>
+          Email <a href="mailto:security@meetcuria.com">security@meetcuria.com</a> with any
+          privacy questions.
+        </p>
+        <p>
+          We may update this page as the site changes. The date at the top always reflects the
+          latest version.
+        </p>
+      </div>
+    </main>
+    <MarketingFooter home={false} />
+  </>
+);
+
+// Tiny path-based router — no router dependency for a two-page static site.
+// Trailing slashes are normalized so /privacy and /privacy/ both match.
+// Cloudflare serves index.html for /privacy via public/_redirects, then this runs.
+const App = () => {
+  const path = window.location.pathname.replace(/\/+$/, '');
+  return path === '/privacy' ? <PrivacyPage /> : <MarketingPage />;
+};
 
 export default App;
