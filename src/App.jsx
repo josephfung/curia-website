@@ -401,7 +401,14 @@ const MarketingFooter = () => (
       </div>
       <div className="m-footer-finepct">
         <span>© {new Date().getFullYear()} <a href="https://linkedin.com/in/josephfung" className="m-footer-author-link">Joseph Fung</a></span>
-        <span>Terms · Privacy · Audit policy</span>
+        {/* "Terms" → the repo's MIT LICENSE (the real legal instrument for OSS);
+            "Audit policy" → the repo's SECURITY.md. Privacy stays plain text until
+            the /privacy page is drafted and approved, so we never ship a dead link. */}
+        <span className="m-footer-legal">
+          <a href="https://github.com/josephfung/curia/blob/main/LICENSE">License</a>
+          {' · '}Privacy{' · '}
+          <a href="https://github.com/josephfung/curia/blob/main/SECURITY.md">Security</a>
+        </span>
       </div>
     </div>
   </footer>

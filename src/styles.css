@@ -1,7 +1,15 @@
 /* Curia marketing — light editorial surface.
-   Manrope + Lora are self-hosted from /public/fonts (served at /fonts/).
-   JetBrains Mono is loaded via Google Fonts in index.html. */
+   Manrope, Lora, and JetBrains Mono are all self-hosted from /public/fonts
+   (served at /fonts/). No third-party font CDN — keeps visitor IPs off Google. */
 
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype-variations'),
+       url('/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: 'Manrope';
   src: url('/fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'),
@@ -435,6 +443,10 @@ a { color: inherit; text-decoration: none; }
 }
 .m-footer-author-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .m-footer-author-link:hover { color: var(--m-ink); }
+/* Legal links share the muted author-link look. Privacy is intentionally plain
+   text (no anchor) until the /privacy page ships — see MarketingFooter. */
+.m-footer-legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.m-footer-legal a:hover { color: var(--m-ink); }
 
 /* ─ Responsive ───────────────────────────────────────────────────── */
 @media (max-width: 1080px) {
