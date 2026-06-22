@@ -1,5 +1,0 @@
-# Cloudflare Pages: serve the SPA shell for the in-app /privacy route so a direct
-# load or refresh of /privacy returns index.html (200, URL preserved) instead of a
-# 404. The client-side router in App.jsx then renders the Privacy page.
-/privacy   /index.html   200
-/privacy/  /index.html   200
