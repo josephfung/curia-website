@@ -25,7 +25,7 @@ const MarketingFooter = ({ home = true }) => (
         <div className="m-footer-col">
           <div className="m-footer-col-title">Office</div>
           {/* <a href="#managed">Managed practice</a> */}
-          <a href="https://calendly.com/josephfung">Start a conversation</a>
+          <a href="https://calendly.com/jbfung/curia">Start a conversation</a>
           <a href={home ? '#faq' : '/#faq'}>FAQ</a>
         </div>
         <div className="m-footer-col">
