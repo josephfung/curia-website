@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
+import CapabilityPreviewCard from '../components/CapabilityPreviewCard.jsx';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
 
@@ -27,67 +28,41 @@ const Hero = () => (
 );
 
 const CapabilitiesSection = () => {
-  const pillars = [
+  const cards = [
     {
-      n: '01',
-      title: 'Communications.',
-      bullets: [
-        'Email triage, drafting, replies, and sending',
-        'Multi-channel: email, Signal, HTTP API, CLI',
-        'A unified voice across every channel',
-        'Contact management with relationship tracking',
-      ],
+      title: 'Check your inbox once a day',
+      body: 'Curia checks your inbox every 15 minutes, classifies unread messages, creates reply drafts in Gmail, tracks unresolved dependencies, and routes urgent items to Signal.',
+      outcome: 'Process your inbox deliberately without trusting luck to surface the important message.',
     },
     {
-      n: '02',
-      title: 'Scheduling and calendar.',
-      bullets: [
-        'Calendar management — create, update, conflict detection',
-        'Free-time finding across attendees',
-        'Templates for requests, reschedules, cancellations',
-        'Calendar-aware context for every interaction',
-      ],
+      title: 'Stop negotiating meeting times',
+      body: 'Curia checks calendars, working hours, time zones, contact identities, and scheduling preferences before finding viable slots, creating the event, and preparing the necessary messages.',
+      outcome: 'Stop spending five messages arranging a 20-minute call.',
     },
     {
-      n: '03',
-      title: 'Research and knowledge work.',
-      bullets: [
-        'Web search and content synthesis',
-        'Multi-session research with persistent memory',
-        'A knowledge graph of people, organizations, projects, decisions',
-        'Institutional memory that compounds — never walks out the door',
-      ],
+      title: 'Never lose a meeting follow-up',
+      body: 'Curia notices when a designated external meeting ends, asks for your takeaways, and turns your response into drafts, tasks, research, remembered facts, and future calendar actions.',
+      outcome: 'A useful conversation no longer depends on you remembering to update five systems later.',
     },
     {
-      n: '04',
-      title: 'Extensibility.',
-      bullets: [
-        '90+ built-in skills',
-        'Build your own agents and skills',
-        'YAML-based agent definition — no deep coding required',
-        'Model Context Protocol (MCP) integration',
-      ],
+      title: 'Walk into important meetings prepared',
+      body: 'Curia combines your private interaction history and relationship memory with current research on the people, companies, and subjects involved.',
+      outcome: 'Arrive with both current research and your own relationship context.',
     },
   ];
   return (
     <section className="m-section" id="capabilities">
       <div className="m-container">
         <div className="m-section-eyebrow">Capabilities</div>
-        <h2 className="m-section-title">
-          Four pillars of the digital knowledge work that buries a CEO.
-        </h2>
+        <h2 className="m-section-title">Responsibilities Curia can take off your plate.</h2>
         <div className="m-pillars m-pillars-4">
-          {pillars.map((p) => (
-            <div className="m-pillar" key={p.n}>
-              <div className="m-pillar-num">{p.n}</div>
-              <div className="m-pillar-rule"></div>
-              <h3 className="m-pillar-title">{p.title}</h3>
-              <ul className="m-pillar-list">
-                {p.bullets.map((b, i) => <li key={i}>{b}</li>)}
-              </ul>
-            </div>
-          ))}
+          {cards.map((c) => <CapabilityPreviewCard key={c.title} {...c} />)}
         </div>
+        <p className="m-cap-bridge">
+          That is only the core office. Curia can also track open loops, maintain
+          private relationship memory, run standing orders, and carry multi-step
+          projects forward. <a href="/capabilities">Explore all capabilities &rarr;</a>
+        </p>
       </div>
     </section>
   );

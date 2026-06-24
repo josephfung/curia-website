@@ -182,6 +182,17 @@ a { color: inherit; text-decoration: none; }
   font-family: 'Manrope', sans-serif; font-size: 15px; line-height: 1.6;
   color: var(--m-ink-2);
 }
+.m-cap-outcome {
+  font-family: 'Lora', Georgia, serif; font-style: italic;
+  font-size: 15px; line-height: 1.5; color: var(--m-ink-mute);
+  margin: 4px 0 0; padding-top: 12px; border-top: 1px solid var(--m-rule);
+}
+.m-cap-bridge {
+  font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.6;
+  color: var(--m-ink-2); max-width: 720px; margin: 48px 0 0;
+}
+.m-cap-bridge a { color: var(--m-teal); font-weight: 600; text-decoration: none; }
+.m-cap-bridge a:hover { text-decoration: underline; }
 
 /* ─ Autonomy ladder ──────────────────────────────────────────────── */
 .m-ladder {
