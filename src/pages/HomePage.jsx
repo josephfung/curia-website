@@ -7,18 +7,20 @@ import MarketingFooter from '../components/MarketingFooter.jsx';
 const Hero = () => (
   <section className="m-hero">
     <div className="m-container">
-      <div className="m-eyebrow">A Digital Office of the CEO</div>
+      <div className="m-eyebrow">A persistent digital office for CEOs</div>
       <h1 className="m-hero-title">
-        Your Digital Office<br />
-        <em>of the CEO.</em>
+        One point of contact.<br />
+        <em>An executive office behind it.</em>
       </h1>
       <p className="m-hero-lede">
-        Communications, scheduling, research, and knowledge work — handled at superhuman
-        speed, with full governance and an audit trail. Open source — clone it, run it, extend it.
+        Curia runs specialist desks for your inbox, calendar, meetings,
+        relationships, research, and ongoing work. Each desk has a standing
+        mandate, private memory, and clear rules for when to act and when to
+        bring you in.
       </p>
       <div className="m-hero-actions">
-        <a className="m-cta" href="https://github.com/josephfung/curia">Get started</a>
-        <a className="m-cta m-cta-ghost" href="#capabilities">Learn more</a>
+        <a className="m-cta" href="/capabilities">Explore Curia&rsquo;s capabilities</a>
+        <a className="m-cta m-cta-ghost" href="https://github.com/josephfung/curia">View on GitHub</a>
       </div>
     </div>
   </section>
