@@ -106,22 +106,22 @@ const GovernanceSection = () => {
     {
       n: '02',
       title: 'Audit trail and accountability.',
-      body: 'Append-only audit log — every action recorded, nothing deleted. Causal tracing from any outcome back through the full decision chain. Every event logged before it is delivered — write-ahead guarantee. Secrets never touch the LLM; only skills hold credentials, and every access is logged.',
+      body: 'Append-only audit log. Every action recorded, nothing deleted. Causal tracing from any outcome back through the full decision chain. Every event is logged before it is delivered (a write-ahead guarantee). Each entry carries the timestamp, the actor, the model, and SHA-256 fingerprints of the prompt and response. Secrets never touch the LLM; only skills hold credentials, and every access is logged by name, never by value.',
     },
     {
       n: '03',
       title: 'Autonomy controls.',
-      body: 'You set the band — from "draft only" to "act independently." Five behavioural levels with clear, predictable boundaries. Intent-drift detection pauses the office when it wanders from the original task. Error budgets cap LLM rounds, spend, and consecutive errors. No infinite loops.',
+      body: 'You set the band, from "draft only" to "act independently." Five behavioural levels with clear, predictable boundaries. Intent-drift detection pauses the office when a task wanders from its original intent. Error budgets cap the number of LLM turns and consecutive errors per task. No infinite loops.',
     },
   ];
   const bands = [
-    { num: '00', name: 'Observe',    desc: 'Curia reads, summarises, surfaces. Never drafts, never sends.' },
-    { num: '25', name: 'Suggest',    desc: 'Curia proposes drafts and replies. The principal sends every one.' },
-    { num: '50', name: 'Stage',      desc: 'Curia stages routine correspondence; principal confirms in batches.' },
-    { num: '85', name: 'Spot-check', desc: 'Curia sends within named lanes; the principal audits at end of day.' },
-    { num: '95', name: 'Standing',   desc: 'Curia operates against pre-approved standing orders. Exceptions escalate.' },
+    { num: '<60', name: 'Restricted',        desc: 'Options and analysis only. No independent action; every external effect needs explicit instruction.' },
+    { num: '60',  name: 'Draft Only',        desc: 'Prepares drafts, plans, and analysis. Never sends or acts without a direct go-ahead.' },
+    { num: '70',  name: 'Approval Required', desc: 'Routine reads proceed; any consequential action is planned and brought for confirmation first.' },
+    { num: '80',  name: 'Spot-check',        desc: 'Acts on routine work; notes consequential actions in its reply so you keep visibility.' },
+    { num: '90',  name: 'Full',              desc: 'Acts independently; flags only genuinely novel, irreversible, or high-stakes actions.' },
   ];
-  const [active, setActive] = useState(3);
+  const [active, setActive] = useState(3); // Spot-check
   return (
     <section className="m-section m-section-dark" id="governance">
       <div className="m-container">
@@ -182,12 +182,14 @@ const GovernanceSection = () => {
             <div className="m-pullquote-attr">— Curia operating principle</div>
           </div>
           <div className="m-audit" aria-label="Sample audit trail">
-            <div className="m-audit-row"><span className="ts">14:02:18Z</span><span className="ev">memory.recall · "Q3 board agenda"</span></div>
-            <div className="m-audit-row"><span className="ts">14:02:19Z</span><span className="ev">graph.read · 4 nodes · sensitivity ≤ confidential</span></div>
-            <div className="m-audit-row"><span className="ts">14:02:24Z</span><span className="ev">draft.compose · 132 tokens · model=staff-v3.2</span></div>
-            <div className="m-audit-row"><span className="ts">14:02:24Z</span><span className="ev">policy.gate · band=Spot-check · status=hold</span></div>
-            <div className="m-audit-row"><span className="ts">14:07:51Z</span><span className="ev">principal.confirm · sender=jf · channel=email</span></div>
-            <div className="m-audit-row"><span className="ts">14:07:52Z</span><span className="ev">action.send · outcome=ok · receipt=msg-7c4a-9e1b</span></div>
+            <div className="m-audit-row"><span className="ts">09:14:02</span><span className="ev">inbound.message · channel=email · sender=unverified</span></div>
+            <div className="m-audit-row"><span className="ts">09:14:02</span><span className="ev">contact.resolved · status=verified</span></div>
+            <div className="m-audit-row"><span className="ts">09:14:05</span><span className="ev">llm.call · agent=ceo-inbox · classify · model=fast</span></div>
+            <div className="m-audit-row"><span className="ts">09:14:06</span><span className="ev">agent.task · coordinator → ceo-inbox</span></div>
+            <div className="m-audit-row"><span className="ts">09:14:07</span><span className="ev">human.decision · gate=urgency · channel=signal</span></div>
+            <div className="m-audit-row"><span className="ts">09:14:08</span><span className="ev">outbound.delivered · channel=signal</span></div>
+            <div className="m-audit-row"><span className="ts">09:21:33</span><span className="ev">inbound.message · ceo reply</span></div>
+            <div className="m-audit-row"><span className="ts">09:21:34</span><span className="ev">task.created · owner=curia · source=ceo-inbox</span></div>
           </div>
         </div>
       </div>
