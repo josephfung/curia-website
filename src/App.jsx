@@ -1,39 +1,9 @@
 import React, { useState } from 'react';
+import MarketingHeader from './components/MarketingHeader.jsx';
+import MarketingFooter from './components/MarketingFooter.jsx';
+import PrivacyPage from './pages/PrivacyPage.jsx';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
-
-// `home` controls how in-page anchors resolve: on the marketing page they stay
-// local (#section); on a standalone route like /privacy they jump back to the
-// homepage (/#section) so the shared header/footer work from anywhere.
-const MarketingHeader = ({ home = true }) => (
-  <header className="m-header">
-    <div className="m-container m-header-inner">
-      <a className="m-wordmark" href={home ? '#' : '/'} aria-label="Curia">
-        <img src="/assets/logo-curia-wordmark.svg" alt="Curia" width="105" height="24" />
-      </a>
-      <nav className="m-nav" aria-label="Primary">
-        <a href={home ? '#capabilities' : '/#capabilities'}>Capabilities</a>
-        <a href={home ? '#governance' : '/#governance'}>Governance</a>
-        <a href={home ? '#get-started' : '/#get-started'}>Get started</a>
-      </nav>
-      <div className="m-header-actions">
-        <a className="m-cta m-cta-ghost" href="https://docs.meetcuria.com">
-          <svg className="m-cta-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-          </svg>
-          Documentation
-        </a>
-        <a className="m-cta" href="https://github.com/josephfung/curia">
-          <svg className="m-cta-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-          </svg>
-          View on GitHub
-        </a>
-      </div>
-    </div>
-  </header>
-);
 
 const Hero = () => (
   <section className="m-hero">
@@ -367,57 +337,6 @@ const FaqSection = () => {
   );
 };
 
-const MarketingFooter = ({ home = true }) => (
-  <footer className="m-footer">
-    <div className="m-container">
-      <div className="m-footer-grid">
-        <div>
-          <a className="m-wordmark" href={home ? '#' : '/'} aria-label="Curia">
-            <img src="/assets/logo-curia-wordmark.svg" alt="Curia" width="96" height="22" />
-          </a>
-          <p className="m-pillar-body" style={{ marginTop: 18, maxWidth: 320 }}>
-            A Digital Office of the CEO. Open source on GitHub.
-          </p>
-          <div className="m-footer-licence">
-            <span className="m-licence-badge">MIT</span>
-            <span>Open-source</span>
-          </div>
-        </div>
-        <div className="m-footer-col">
-          <div className="m-footer-col-title">Product</div>
-          <a href={home ? '#capabilities' : '/#capabilities'}>Capabilities</a>
-          <a href={home ? '#governance' : '/#governance'}>Governance</a>
-          <a href={home ? '#get-started' : '/#get-started'}>Get started</a>
-        </div>
-        <div className="m-footer-col">
-          <div className="m-footer-col-title">Office</div>
-          {/* <a href="#managed">Managed practice</a> */}
-          <a href="https://calendly.com/josephfung">Start a conversation</a>
-          <a href={home ? '#faq' : '/#faq'}>FAQ</a>
-        </div>
-        <div className="m-footer-col">
-          <div className="m-footer-col-title">Open source</div>
-          <a href="https://github.com/josephfung/curia">GitHub</a>
-          <a href="https://github.com/josephfung/curia#quickstart">Quickstart</a>
-          <a href="https://docs.meetcuria.com">Docs</a>
-        </div>
-      </div>
-      <div className="m-footer-finepct">
-        <span>© {new Date().getFullYear()} <a href="https://linkedin.com/in/josephfung" className="m-footer-author-link">Joseph Fung</a></span>
-        {/* "License" → the repo's MIT LICENSE (the real legal instrument for OSS);
-            "Security" → the repo's SECURITY.md; "Privacy" → the in-app /privacy page. */}
-        <span className="m-footer-legal">
-          <a href="https://github.com/josephfung/curia/blob/main/LICENSE">License</a>
-          {' · '}
-          <a href="/privacy">Privacy</a>
-          {' · '}
-          <a href="https://github.com/josephfung/curia/blob/main/SECURITY.md">Security</a>
-        </span>
-      </div>
-    </div>
-  </footer>
-);
-
 const MarketingPage = () => (
   <>
     <MarketingHeader />
@@ -428,80 +347,6 @@ const MarketingPage = () => (
     <ManagedSection />
     <FaqSection />
     <MarketingFooter />
-  </>
-);
-
-const PrivacyPage = () => (
-  <>
-    <MarketingHeader home={false} />
-    <main className="m-section">
-      <div className="m-container m-legal">
-        <div className="m-section-eyebrow">Legal</div>
-        <h1 className="m-section-title">Privacy</h1>
-        <p className="m-legal-updated">Last updated June 22, 2026</p>
-
-        <p className="m-legal-lede">
-          Curia is open-source software you run on your own infrastructure. This page
-          covers two things: how the website at meetcuria.com handles your data, and
-          what that means for the Curia software itself.
-        </p>
-
-        <h2 className="m-legal-h">The website</h2>
-        <p>This site is a static marketing page. It does not track you.</p>
-        <ul className="m-legal-list">
-          <li><strong>No analytics.</strong> We don&rsquo;t use Google Analytics, Plausible, or
-            any other tracking tool. We don&rsquo;t know who you are or that you visited.</li>
-          <li><strong>No cookies.</strong> The site sets none.</li>
-          <li><strong>No third-party trackers or ad tech.</strong> Fonts are self-hosted, so your
-            browser doesn&rsquo;t call out to Google or any other CDN when the page loads.</li>
-        </ul>
-        <p>
-          The site is hosted on Cloudflare Pages. Like any web host, Cloudflare processes
-          standard request data (such as your IP address) to deliver the site and protect it
-          from abuse, governed by{' '}
-          <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare&rsquo;s privacy policy</a>.
-          We don&rsquo;t receive or store this ourselves.
-        </p>
-
-        <h2 className="m-legal-h">When you contact us</h2>
-        <p>The only personal information we ever hold is what you choose to send us:</p>
-        <ul className="m-legal-list">
-          <li><strong>Email.</strong> If you email us, we keep your message and address to reply.
-            Nothing more.</li>
-          <li><strong>Booking a call.</strong> The &ldquo;Start a conversation&rdquo; link uses{' '}
-            <a href="https://calendly.com/">Calendly</a>, a third party. If you book, the name,
-            email, and time you provide go to Calendly under{' '}
-            <a href="https://calendly.com/privacy">their privacy policy</a>. We see only the
-            details needed to meet with you.</li>
-        </ul>
-        <p>
-          We don&rsquo;t sell your information, share it with advertisers, or use it for anything
-          beyond responding to you.
-        </p>
-
-        <h2 className="m-legal-h">The Curia software</h2>
-        <p>
-          This is the important part. Curia is self-hosted: you clone it, run it on your own
-          machines, and connect your own accounts and API keys.{' '}
-          <strong>Your email, calendar, contacts, and everything Curia processes stay on your
-          infrastructure.</strong> We are the maintainer of the software, not the operator of
-          your instance. We never receive, see, or store any data Curia handles for you. How
-          that data is treated is governed by your own setup and the providers you connect
-          (your LLM provider, email host, and so on), not by us.
-        </p>
-
-        <h2 className="m-legal-h">Questions</h2>
-        <p>
-          Email <a href="mailto:security@meetcuria.com">security@meetcuria.com</a> with any
-          privacy questions.
-        </p>
-        <p>
-          We may update this page as the site changes. The date at the top always reflects the
-          latest version.
-        </p>
-      </div>
-    </main>
-    <MarketingFooter home={false} />
   </>
 );
 
