@@ -2,6 +2,8 @@ import React from 'react';
 import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
 import CapabilityDetail from '../components/CapabilityDetail.jsx';
+import OfficeDeskCard from '../components/OfficeDeskCard.jsx';
+import EvidencePlaceholder from '../components/EvidencePlaceholder.jsx';
 
 // Eight responsibilities grouped into four named sections.
 // Copy verbatim from task brief — do not edit without updating the brief.
@@ -258,6 +260,65 @@ const CapabilitiesPage = () => (
         ))}
       </div>
     </main>
+    {/* Deployed desks — anchor target for homepage CTA and "See how the office works" link */}
+    <section className="m-section" id="deployed-desks">
+      <div className="m-container">
+        <div className="m-section-eyebrow">Live example</div>
+        <h2 className="m-section-title">Desks one CEO added to a live office</h2>
+        <p className="m-pillar-body" style={{ maxWidth: 720, marginBottom: 48 }}>
+          These are not hypothetical use cases. They are responsibilities one CEO added to a live
+          Curia office by defining a mandate, selecting tools, setting a schedule, scoping memory,
+          and writing explicit operating instructions. The point is not the specific desks. It is
+          that you can build the desks your own work needs.
+        </p>
+
+        <div className="m-desk-grid">
+          <OfficeDeskCard
+            title="Editorial Desk"
+            body="Monitors the content pipeline, flags pieces approaching deadlines, surfaces drafts that have gone quiet, and sends a morning status each weekday. It has read access to the content calendar and drafts folder, write access only to its own notes, and no authority to contact contributors directly without approval."
+          />
+          <OfficeDeskCard
+            title="Expense Desk"
+            body="Reviews submitted expenses against policy, checks for duplicates, flags anything requiring CFO approval, and logs each decision with its reasoning. It has read access to submitted receipts and the expense policy, write access to the approval log, and no authority to trigger payments."
+          />
+          <OfficeDeskCard
+            title="Social Desk"
+            body="Drafts posts for a social account based on a weekly brief, queues approved drafts, and reports on engagement each Monday morning. All posts require approval before publishing. It has write access to the draft queue only and no authority to publish directly."
+          />
+        </div>
+
+        <EvidencePlaceholder caption="Sanitized scheduled-job history from a live Curia office. Replace with real capture." />
+      </div>
+    </section>
+
+    {/* Add-a-desk — travel as an example you could build, not a deployed desk */}
+    <section className="m-section" id="add-a-desk">
+      <div className="m-container m-adddesk">
+        <div className="m-section-eyebrow">Extend</div>
+        <h2 className="m-section-title">Add another desk</h2>
+        <p className="m-pillar-body">
+          A Curia desk is a specialist agent with a defined mandate, selected tools,
+          scoped memory, a schedule when needed, and explicit permissions. Adding a desk
+          expands the office without granting every agent access to everything.
+        </p>
+        <ul className="m-adddesk-list">
+          <li>Define the responsibility</li>
+          <li>Select the tools it may use</li>
+          <li>Limit the memory it can access</li>
+          <li>Set its schedule or triggers</li>
+          <li>Choose which actions require approval</li>
+          <li>Record every action in the audit trail</li>
+        </ul>
+        <p className="m-pillar-body">
+          A travel desk that surfaces who to see when you visit a city, a diligence
+          desk, a hiring-pipeline desk: the same framework builds them all.
+        </p>
+        <div className="m-hero-actions">
+          <a className="m-cta" href="https://docs.meetcuria.com">Read the agent-building documentation</a>
+        </div>
+      </div>
+    </section>
+
     <MarketingFooter home={false} />
   </>
 );
