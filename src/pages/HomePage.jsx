@@ -68,6 +68,32 @@ const CapabilitiesSection = () => {
   );
 };
 
+const OperatingModelSection = () => {
+  const items = [
+    { title: 'One Coordinator', body: 'You communicate with one Curia identity. It decides what it can handle directly and when to involve a specialist.' },
+    { title: 'Standing mandates', body: 'Each specialist knows what it watches, what it owns, which tools it can use, and where its authority ends.' },
+    { title: 'Shared context', body: 'Tasks, relationships, preferences, and prior work persist across conversations and system restarts.' },
+    { title: 'Governed execution', body: 'Permissions, autonomy levels, error limits, and audit records constrain what the office can do.' },
+  ];
+  return (
+    <section className="m-section" id="how-it-works">
+      <div className="m-container">
+        <div className="m-section-eyebrow">How Curia works</div>
+        <h2 className="m-section-title">One office. Specialist desks behind it.</h2>
+        <div className="m-pillars m-pillars-4">
+          {items.map((it) => (
+            <div className="m-pillar" key={it.title}>
+              <div className="m-pillar-rule"></div>
+              <h3 className="m-pillar-title">{it.title}</h3>
+              <p className="m-pillar-body">{it.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const GovernanceSection = () => {
   const trust = [
     {
@@ -319,6 +345,7 @@ const HomePage = () => (
     <MarketingHeader />
     <Hero />
     <CapabilitiesSection />
+    <OperatingModelSection />
     <GovernanceSection />
     <GetStartedSection />
     <ManagedSection />
