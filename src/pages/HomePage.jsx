@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
 import CapabilityPreviewCard from '../components/CapabilityPreviewCard.jsx';
+import OfficeDeskCard from '../components/OfficeDeskCard.jsx';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
 
@@ -194,6 +195,36 @@ const GovernanceSection = () => {
   );
 };
 
+const DeployedDesksSection = () => {
+  const desks = [
+    { title: 'Editorial research and writing pitches', body: 'Monitors subjects relevant to the CEO\'s writing, researches new developments, compares them with previous work, and presents pitches with a timely angle, central argument, supporting evidence, and recommended format.' },
+    { title: 'Expense and receipt organization', body: 'Watches for receipts, extracts vendor, date, amount, and category, identifies duplicates or missing information, and prepares ambiguous items for review.' },
+    { title: 'Social monitoring and engagement triage', body: 'Watches a social account for replies, mentions, and new activity, filters low-value noise, surfaces the conversations where the CEO\'s attention could matter, and can unfollow accounts that drift off-topic (always reported back, so it is reversible).' },
+  ];
+  return (
+    <section className="m-section" id="deployed-desks">
+      <div className="m-container">
+        <div className="m-section-eyebrow">Running today</div>
+        <h2 className="m-section-title">Already running in the founder&rsquo;s Curia office.</h2>
+        <p className="m-section-lede">
+          The real value is that you build the desks your own work needs. These three
+          are not stock features. They are desks one CEO added to his own Curia office,
+          shown here to make the point concrete: the extensibility is real, and yours
+          would look different.
+        </p>
+        <div className="m-desk-grid">
+          {desks.map((d) => <OfficeDeskCard key={d.title} {...d} />)}
+        </div>
+        <p className="m-desk-note">
+          Each desk uses the same Curia framework: a defined mandate, selected tools,
+          private memory, scheduled work, and explicit limits on when it can act.{' '}
+          <a href="/capabilities#deployed-desks" style={{ color: 'var(--m-teal)', fontWeight: 600 }}>See how the office works &rarr;</a>
+        </p>
+      </div>
+    </section>
+  );
+};
+
 const GetStartedSection = () => (
   <section className="m-section" id="get-started">
     <div className="m-container">
@@ -346,6 +377,7 @@ const HomePage = () => (
     <Hero />
     <CapabilitiesSection />
     <OperatingModelSection />
+    <DeployedDesksSection />
     <GovernanceSection />
     <GetStartedSection />
     <ManagedSection />

@@ -413,6 +413,19 @@ a { color: inherit; text-decoration: none; }
   color: var(--m-ink-mute);
 }
 
+/* ─ Deployed desks ───────────────────────────────────────────────── */
+.m-desk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.m-desk-card {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 28px; background: var(--m-bg-alt);
+  border: 1px solid var(--m-rule); border-radius: 6px;
+}
+.m-desk-title { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 20px; line-height: 1.25; margin: 0; }
+.m-desk-note {
+  font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 1.6;
+  color: var(--m-ink-mute); max-width: 720px; margin: 40px 0 0;
+}
+
 /* ─ Footer extras ────────────────────────────────────────────────── */
 .m-footer-licence {
   margin-top: 18px;
@@ -491,6 +504,7 @@ a { color: inherit; text-decoration: none; }
   .m-trust { grid-template-columns: 1fr; gap: 40px; }
   .m-getstarted { grid-template-columns: 1fr; gap: 40px; }
   .m-managed-grid { grid-template-columns: 1fr; gap: 32px; }
+  .m-desk-grid { grid-template-columns: 1fr; gap: 24px; }
 }
 @media (max-width: 880px) {
   .m-hero-title { font-size: 44px; }
