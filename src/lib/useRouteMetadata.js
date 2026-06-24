@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 // overrides title + description + OG tags when a standalone route renders.
 const META = {
   '/capabilities': {
-    title: 'Curia Capabilities — What Curia Can Take Off Your Plate',
+    title: 'Curia Capabilities: What Curia Can Take Off Your Plate',
     description:
       'See how Curia handles inbox triage, scheduling, meeting follow-up, relationship memory, research, standing orders, and multi-step executive work.',
   },

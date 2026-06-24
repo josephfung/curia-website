@@ -100,8 +100,8 @@ const GovernanceSection = () => {
     {
       n: '01',
       title: 'Open source.',
-      body: "Full codebase on GitHub under a permissive licence — every line auditable. Your head of engineering can evaluate the architecture before you commit. A managed practice is offered on top by the maintainer, but the core platform stands on its own and is yours to run.",
-      foot: "Don’t take our word for it — read the code.",
+      body: "Full codebase on GitHub under a permissive licence. Every line auditable. Your head of engineering can evaluate the architecture before you commit. A managed practice is offered on top by the maintainer, but the core platform stands on its own and is yours to run.",
+      foot: "Don’t take our word for it. Read the code.",
     },
     {
       n: '02',
@@ -130,7 +130,7 @@ const GovernanceSection = () => {
           Why trust an office of agents with your inbox?
         </h2>
         <p className="m-section-lede">
-          Three answers — built into the system, not bolted on.
+          Three answers, built into the system. Not bolted on.
         </p>
         <div className="m-trust">
           {trust.map((t) => (
@@ -149,7 +149,7 @@ const GovernanceSection = () => {
           <div className="m-ladder">
             <div>
               <p className="m-pillar-body" style={{ marginBottom: 18 }}>
-                Yes, there is a literal slider in settings — and that is the point.
+                Yes, there is a literal slider in settings. That is the point.
                 Autonomy is a named, explicit contract between the principal and the
                 office: chosen on purpose, recorded in the audit trail, and revisited
                 on a cadence. Never a default you forgot you set.
@@ -179,7 +179,7 @@ const GovernanceSection = () => {
             <blockquote className="m-pullquote">
               This is what was decided, this is who decided it, this is the trail you can hand to your auditor.
             </blockquote>
-            <div className="m-pullquote-attr">— Curia operating principle</div>
+            <div className="m-pullquote-attr">Curia operating principle</div>
           </div>
           <div className="m-audit" aria-label="Sample audit trail">
             <div className="m-audit-row"><span className="ts">09:14:02</span><span className="ev">inbound.message · channel=email · sender=unverified</span></div>
@@ -296,7 +296,7 @@ const ManagedSection = () => (
             <div className="m-managed-pillar-title">Battle-tested agents</div>
             <p className="m-pillar-body">
               Writing-scout, essay-writer, calendar-curator, industry-intel-researcher.
-              Born from one CEO's working life — refined as new clients ask for more.
+              Born from one CEO's working life, refined as new clients ask for more.
             </p>
           </div>
           <div className="m-managed-pillar">
@@ -322,7 +322,7 @@ const ManagedSection = () => (
           <div className="m-bio-name">Joseph Fung</div>
           <p className="m-bio-body">
             Seasoned tech CEO and founder. Built Curia because it is the system he
-            always wished he had — and he is personally accountable for every
+            always wished he had. He is personally accountable for every
             instance in the managed practice.
           </p>
           <a className="m-bio-link" href="https://www.linkedin.com/in/josephfung/">LinkedIn →</a>
@@ -340,15 +340,15 @@ const ManagedSection = () => (
 const FaqSection = () => {
   const faqs = [
     { q: 'Who is Curia for?',                        a: 'Curia is designed for experienced CEOs, founders, and principals whose work is buried across email, calendar, relationships, research, and recurring follow-through. It is especially useful for leaders who know what a strong executive office should do and want more continuity, control, and institutional memory.' },
-    { q: 'Is Curia really open source?',             a: 'Yes. The full codebase lives on GitHub under a permissive (MIT) licence — clone it, audit it, run it, extend it. Many technical founders self-host and add their own agents and skills.' },
+    { q: 'Is Curia really open source?',             a: 'Yes. The full codebase lives on GitHub under a permissive (MIT) licence: clone it, audit it, run it, extend it. Many technical founders self-host and add their own agents and skills.' },
     // Managed-practice FAQs hidden while the managed section is dark (see ManagedSection). Restore alongside it.
     // { q: 'How does the managed practice differ from the OSS core?', a: 'The OSS core is a fully functional Digital Office of the CEO — clone, deploy, extend. The managed practice adds battle-tested agents and skills born from real CEO experience, bespoke development driven by client needs, and personal operation of every instance. Maximum ten managed clients. Permanent positioning, not a phase.' },
     { q: 'Can I add my own desks?',                  a: 'Yes. A Curia desk is a specialist agent with a defined mandate, selected tools, scoped memory, permissions, and an optional schedule. You can add new desks without granting every agent access to everything. Curia ships with 90+ built-in skills, and it speaks the Model Context Protocol (MCP), so external tools wire straight in.' },
-    { q: 'Where does Curia run?',                    a: "Anywhere you can run Docker and Node — your laptop, a VPS, your own VPC, or on-premises. It is a single-tenant, self-hosted deployment: you hold the keys, and your data stays on your infrastructure, apart from the context Curia sends to the model provider you configure." },
+    { q: 'Where does Curia run?',                    a: "Anywhere you can run Docker and Node: your laptop, a VPS, your own VPC, or on-premises. It is a single-tenant, self-hosted deployment: you hold the keys, and your data stays on your infrastructure, apart from the context Curia sends to the model provider you configure." },
     { q: 'How does the audit trail work?',           a: 'Every action (read, draft, send, decision) is recorded with a timestamp, the actor, the model, and SHA-256 fingerprints of the prompt and response. Append-only Postgres with causal tracing across every event. Secrets never touch the LLM; only skills hold credentials, and every access is logged.' },
     { q: 'Is Curia an executive assistant replacement?', a: 'Curia can own many persistent responsibilities normally handled by an executive assistant or chief of staff, but it is not a person and should not be described as one. It is strongest when given clear standing mandates, connected tools, explicit permissions, and defined escalation rules.' },
     { q: 'Will the API surface change?',             a: 'After v1.0.0, no. v1.0.0 means the API surface is stable: agent contracts, skill manifests, channel adapters, the knowledge-graph query interface, the autonomy model, and configuration schemas all freeze. Self-hosters can rely on interfaces that will not break between releases.' },
-    { q: 'What does it cost to run?',                a: 'The software is free and MIT-licensed. Your only costs are the infrastructure you run it on and your own LLM API usage — there is no per-seat fee and nothing to buy.' },
+    { q: 'What does it cost to run?',                a: 'The software is free and MIT-licensed. Your only costs are the infrastructure you run it on and your own LLM API usage. There is no per-seat fee and nothing to buy.' },
     // { q: 'How much does the managed practice cost?', a: 'There is no pricing page. Engagements are conversations, not transactions. The frame is "Curia plus junior support versus a $10k-per-month EA" — augmentation, not replacement. Start a conversation if you want a number.' },
   ];
   const [open, setOpen] = useState(0);
