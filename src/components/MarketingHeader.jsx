@@ -10,7 +10,7 @@ const MarketingHeader = ({ home = true }) => (
         <img src="/assets/logo-curia-wordmark.svg" alt="Curia" width="105" height="24" />
       </a>
       <nav className="m-nav" aria-label="Primary">
-        <a href={home ? '#capabilities' : '/#capabilities'}>Capabilities</a>
+        <a href="/capabilities">Capabilities</a>
         <a href={home ? '#governance' : '/#governance'}>Governance</a>
         <a href={home ? '#get-started' : '/#get-started'}>Get started</a>
       </nav>
