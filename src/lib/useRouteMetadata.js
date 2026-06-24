@@ -1,19 +1,27 @@
 import { useEffect } from 'react';
 
-// Per-route document metadata. index.html holds the homepage defaults; this
-// overrides title + description + OG tags when a standalone route renders.
+// Per-route document metadata. The '/' entry defines the homepage defaults used
+// both to set metadata on the homepage itself and to restore defaults on cleanup
+// when navigating away from another route.
 const META = {
+  '/': {
+    title: 'Curia — A Persistent Digital Office for CEOs',
+    description:
+      'One point of contact backed by specialist desks for your inbox, calendar, meetings, relationships, research, and ongoing work. Open source and self-hosted.',
+    ogTitle: 'Curia — An Executive Office Behind One Point of Contact',
+    ogDescription:
+      'Curia runs specialist desks with standing mandates, private memory, explicit permissions, and clear escalation rules.',
+  },
   '/capabilities': {
+    // em-dash in brand title is the allowed exception; do not remove
     title: 'Curia Capabilities — What Curia Can Take Off Your Plate',
     description:
       'See how Curia handles inbox triage, scheduling, meeting follow-up, relationship memory, research, standing orders, and multi-step executive work.',
   },
 };
 
-function getMeta(name, attr) {
-  const el = document.querySelector(`meta[${attr}="${name}"]`);
-  return el ? el.getAttribute('content') : '';
-}
+// The homepage defaults, used to restore metadata when leaving a non-home route.
+const HOME = META['/'];
 
 function setMeta(name, attr, value) {
   let el = document.querySelector(`meta[${attr}="${name}"]`);
@@ -28,25 +36,23 @@ function setMeta(name, attr, value) {
 export function useRouteMetadata(path) {
   useEffect(() => {
     const m = META[path];
-    if (!m) return; // homepage/privacy keep the index.html defaults
+    // Unknown paths (e.g. /privacy) keep whatever index.html set; don't touch.
+    if (!m) return;
 
-    // Capture current values before override
-    const prevTitle = document.title;
-    const prevDescription = getMeta('description', 'name');
-    const prevOgTitle = getMeta('og:title', 'property');
-    const prevOgDescription = getMeta('og:description', 'property');
-
-    // Set new values
+    // Apply route-specific metadata. ogTitle/ogDescription fall back to title/description
+    // if not explicitly set (capabilities page omits them).
     document.title = m.title;
     setMeta('description', 'name', m.description);
-    setMeta('og:title', 'property', m.title);
-    setMeta('og:description', 'property', m.description);
+    setMeta('og:title', 'property', m.ogTitle ?? m.title);
+    setMeta('og:description', 'property', m.ogDescription ?? m.description);
 
     return () => {
-      document.title = prevTitle;
-      setMeta('description', 'name', prevDescription);
-      setMeta('og:title', 'property', prevOgTitle);
-      setMeta('og:description', 'property', prevOgDescription);
+      // Restore homepage defaults rather than DOM-captured values, so cleanup is
+      // always deterministic regardless of order effects or SSR hydration.
+      document.title = HOME.title;
+      setMeta('description', 'name', HOME.description);
+      setMeta('og:title', 'property', HOME.ogTitle);
+      setMeta('og:description', 'property', HOME.ogDescription);
     };
   }, [path]);
 }

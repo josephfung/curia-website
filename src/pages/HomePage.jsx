@@ -164,6 +164,15 @@ const GovernanceSection = () => {
                   key={b.num}
                   className={`m-ladder-row${i === active ? ' active' : ''}`}
                   onClick={() => setActive(i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={i === active}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      if (e.key === ' ') e.preventDefault();
+                      setActive(i);
+                    }
+                  }}
                 >
                   <span className="m-ladder-num">{b.num}</span>
                   <span className="m-ladder-name">{b.name}</span>
@@ -220,7 +229,7 @@ const DeployedDesksSection = () => {
         <p className="m-desk-note">
           Each desk uses the same Curia framework: a defined mandate, selected tools,
           private memory, scheduled work, and explicit limits on when it can act.{' '}
-          <a href="/capabilities#deployed-desks" style={{ color: 'var(--m-teal)', fontWeight: 600 }}>See how the office works &rarr;</a>
+          <a href="/capabilities#deployed-desks">See how the office works &rarr;</a>
         </p>
       </div>
     </section>
@@ -360,7 +369,19 @@ const FaqSection = () => {
         <div className="m-faq">
           {faqs.map((f, i) => (
             <div key={i} className="m-faq-row">
-              <div className="m-faq-q" onClick={() => setOpen(open === i ? -1 : i)}>
+              <div
+                className="m-faq-q"
+                onClick={() => setOpen(open === i ? -1 : i)}
+                role="button"
+                tabIndex={0}
+                aria-expanded={open === i}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.key === ' ') e.preventDefault();
+                    setOpen(open === i ? -1 : i);
+                  }
+                }}
+              >
                 <span className="m-faq-q-text">{f.q}</span>
                 <span className="m-faq-q-toggle">{open === i ? '−' : '+'}</span>
               </div>

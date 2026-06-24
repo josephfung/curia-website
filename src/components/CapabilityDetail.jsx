@@ -13,14 +13,18 @@ const CapabilityDetail = ({ heading, description, sequence, makesItWork, bringsY
       </ol>
     )}
     <div className="m-capdetail-cols">
-      <div>
-        <div className="m-capdetail-label">What makes it work</div>
-        <ul className="m-capdetail-list">{makesItWork.map((m, i) => <li key={i}>{m}</li>)}</ul>
-      </div>
-      <div>
-        <div className="m-capdetail-label">Where Curia brings you in</div>
-        <ul className="m-capdetail-list">{bringsYouIn.map((m, i) => <li key={i}>{m}</li>)}</ul>
-      </div>
+      {makesItWork?.length > 0 && (
+        <div>
+          <div className="m-capdetail-label">What makes it work</div>
+          <ul className="m-capdetail-list">{makesItWork.map((m, i) => <li key={i}>{m}</li>)}</ul>
+        </div>
+      )}
+      {bringsYouIn?.length > 0 && (
+        <div>
+          <div className="m-capdetail-label">Where Curia brings you in</div>
+          <ul className="m-capdetail-list">{bringsYouIn.map((m, i) => <li key={i}>{m}</li>)}</ul>
+        </div>
+      )}
     </div>
     <p className="m-capdetail-result">{result}</p>
   </article>
