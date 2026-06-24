@@ -231,13 +231,12 @@ const GetStartedSection = () => (
   <section className="m-section" id="get-started">
     <div className="m-container">
       <div className="m-section-eyebrow">Get started</div>
-      <h2 className="m-section-title">Run it yourself.</h2>
+      <h2 className="m-section-title">Run your own Curia office.</h2>
       <div className="m-getstarted">
         <div>
           <p className="m-pillar-body" style={{ fontSize: 17, marginBottom: 28, maxWidth: 560 }}>
-            Curia is open source. Clone the repository, follow the quickstart, and run
-            your own Digital Office of the CEO. Extend it with your own agents and
-            skills. Inspect every line before you commit.
+            Curia is open source and single-tenant. Review the code, deploy it on
+            infrastructure you control, and extend it with your own desks and skills.
           </p>
           <div className="m-hero-actions">
             <a className="m-cta" href="https://github.com/josephfung/curia">
@@ -249,6 +248,7 @@ const GetStartedSection = () => (
               View on GitHub
             </a>
             <a className="m-cta m-cta-ghost" href="https://github.com/josephfung/curia#quickstart">Read the quickstart</a>
+            <a className="m-cta m-cta-ghost" href="https://docs.meetcuria.com">Read the documentation</a>
           </div>
           <div className="m-getstarted-note">
             MIT-licensed · Self-host on your own infrastructure · Browser-based setup
@@ -257,7 +257,7 @@ const GetStartedSection = () => (
         <div className="m-prereqs">
           <div className="m-prereqs-title">Prerequisites</div>
           <ul className="m-prereqs-list">
-            <li><span className="m-mono">node</span><span>≥ 22</span></li>
+            <li><span className="m-mono">node</span><span>≥ 24</span></li>
             <li><span className="m-mono">docker</span><span>Postgres + pgvector</span></li>
             <li><span className="m-mono">pnpm</span><span>package manager</span></li>
             <li><span className="m-mono">api key</span><span>Anthropic</span></li>
