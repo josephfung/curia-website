@@ -10,6 +10,11 @@ const META = {
   },
 };
 
+function getMeta(name, attr) {
+  const el = document.querySelector(`meta[${attr}="${name}"]`);
+  return el ? el.getAttribute('content') : '';
+}
+
 function setMeta(name, attr, value) {
   let el = document.querySelector(`meta[${attr}="${name}"]`);
   if (!el) {
@@ -24,13 +29,24 @@ export function useRouteMetadata(path) {
   useEffect(() => {
     const m = META[path];
     if (!m) return; // homepage/privacy keep the index.html defaults
+
+    // Capture current values before override
     const prevTitle = document.title;
+    const prevDescription = getMeta('description', 'name');
+    const prevOgTitle = getMeta('og:title', 'property');
+    const prevOgDescription = getMeta('og:description', 'property');
+
+    // Set new values
     document.title = m.title;
     setMeta('description', 'name', m.description);
     setMeta('og:title', 'property', m.title);
     setMeta('og:description', 'property', m.description);
+
     return () => {
       document.title = prevTitle;
+      setMeta('description', 'name', prevDescription);
+      setMeta('og:title', 'property', prevOgTitle);
+      setMeta('og:description', 'property', prevOgDescription);
     };
   }, [path]);
 }
