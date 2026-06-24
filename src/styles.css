@@ -280,6 +280,8 @@ a { color: inherit; text-decoration: none; }
   font-family: 'Manrope', sans-serif; font-size: 15px; line-height: 1.65;
   color: var(--m-ink-2); margin-top: 16px; max-width: 640px;
 }
+.m-faq-a a { color: var(--m-teal); text-decoration: underline; text-underline-offset: 2px; }
+.m-faq-a a:hover { color: var(--m-ink); }
 
 /* ─ Governance (dark band) ───────────────────────────────────────── */
 .m-section-dark {
@@ -430,6 +432,9 @@ a { color: inherit; text-decoration: none; }
 }
 .m-desk-note a { color: var(--m-teal); font-weight: 600; text-decoration: none; }
 .m-desk-note a:hover { text-decoration: underline; }
+/* Desk cards on the dark (reverse-coloured) live-example band */
+.m-section-dark .m-desk-card { background: #161B18; border-color: rgba(255,255,255,0.08); }
+.m-section-dark .m-desk-title { color: #F4EFE6; }
 
 /* ─ Footer extras ────────────────────────────────────────────────── */
 .m-footer-licence {
@@ -510,7 +515,17 @@ a { color: inherit; text-decoration: none; }
   margin: 72px 0 28px; padding-bottom: 12px; border-bottom: 1px solid var(--m-rule);
 }
 .m-capgroup-label:first-of-type { margin-top: 0; }
-.m-capdetail { max-width: 820px; margin: 0 0 56px; }
+/* Each responsibility is a 2-col row: text beside a screenshot slot, alternating sides. */
+.m-capdetail-row {
+  display: grid; grid-template-columns: 1fr 0.8fr; gap: 56px;
+  align-items: start; margin: 0 0 80px;
+}
+.m-capdetail-row.flip .m-capdetail { order: 2; }
+.m-capdetail-row.flip .m-capdetail-media { order: 1; }
+.m-capdetail-media { position: sticky; top: 104px; }
+.m-capdetail-media .m-evidence-ph { margin: 0; }
+.m-capdetail-media .m-evidence-ph-box { min-height: 300px; }
+.m-capdetail { margin: 0; }
 .m-capdetail-h { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.2; margin: 0 0 16px; }
 .m-capdetail-seq { font-family: 'Manrope', sans-serif; font-size: 15px; line-height: 1.6; color: var(--m-ink-2); margin: 16px 0; padding-left: 22px; }
 .m-capdetail-seq li { margin-bottom: 6px; }
@@ -543,6 +558,11 @@ a { color: inherit; text-decoration: none; }
   .m-footer-grid { grid-template-columns: 1fr 1fr; }
   .m-section-managed { padding: 80px 0; }
   .m-capdetail-cols { grid-template-columns: 1fr; gap: 24px; }
+  .m-capdetail-row { grid-template-columns: 1fr; gap: 28px; margin-bottom: 56px; }
+  .m-capdetail-row.flip .m-capdetail { order: 0; }
+  .m-capdetail-row.flip .m-capdetail-media { order: 0; }
+  .m-capdetail-media { position: static; }
+  .m-capdetail-media .m-evidence-ph-box { min-height: 200px; }
 }
 @media (max-width: 560px) {
   .m-container { padding: 0 20px; }

@@ -3,7 +3,6 @@ import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
 import CapabilityDetail from '../components/CapabilityDetail.jsx';
 import OfficeDeskCard from '../components/OfficeDeskCard.jsx';
-import EvidencePlaceholder from '../components/EvidencePlaceholder.jsx';
 
 // Eight responsibilities grouped into four named sections.
 // Copy verbatim from task brief — do not edit without updating the brief.
@@ -250,20 +249,27 @@ const CapabilitiesPage = () => (
           below explains what Curia does, what makes it work, and where it brings you in.
         </p>
 
-        {GROUPS.map((group) => (
-          <React.Fragment key={group.label}>
-            <div className="m-capgroup-label">{group.label}</div>
-            {group.capabilities.map((cap) => (
-              <CapabilityDetail key={cap.heading} {...cap} />
-            ))}
-          </React.Fragment>
-        ))}
+        {(() => {
+          // Running index across all groups so the screenshot side alternates
+          // continuously down the page, not per-group.
+          let n = -1;
+          return GROUPS.map((group) => (
+            <React.Fragment key={group.label}>
+              <div className="m-capgroup-label">{group.label}</div>
+              {group.capabilities.map((cap) => {
+                n += 1;
+                return <CapabilityDetail key={cap.heading} index={n} {...cap} />;
+              })}
+            </React.Fragment>
+          ));
+        })()}
       </div>
     </main>
-    {/* Deployed desks — anchor target for homepage CTA and "See how the office works" link */}
-    <section className="m-section" id="deployed-desks">
+    {/* Deployed desks — anchor target for homepage CTA and "See real examples" link.
+        Reverse-coloured (dark) treatment, matching the homepage governance band. */}
+    <section className="m-section m-section-dark" id="deployed-desks">
       <div className="m-container">
-        <div className="m-section-eyebrow">Live example</div>
+        <div className="m-section-eyebrow m-section-eyebrow-dark">Live example</div>
         <h2 className="m-section-title">Desks one CEO added to a live office</h2>
         <p className="m-pillar-body" style={{ maxWidth: 720, marginBottom: 48 }}>
           These are not hypothetical use cases. They are responsibilities one CEO added to a live
@@ -286,8 +292,6 @@ const CapabilitiesPage = () => (
             body="Drafts posts for a social account based on a weekly brief, queues approved drafts, and reports on engagement each Monday morning. All posts require approval before publishing. It has write access to the draft queue only and no authority to publish directly."
           />
         </div>
-
-        <EvidencePlaceholder caption="Sanitized scheduled-job history from a live Curia office. Replace with real capture." />
       </div>
     </section>
 
@@ -314,7 +318,7 @@ const CapabilitiesPage = () => (
           desk, a hiring-pipeline desk: the same framework builds them all.
         </p>
         <div className="m-hero-actions">
-          <a className="m-cta" href="https://docs.meetcuria.com">Read the agent-building documentation</a>
+          <a className="m-cta" href="https://docs.meetcuria.com/agents/building-custom-agents">Read the agent-building documentation</a>
         </div>
       </div>
     </section>
