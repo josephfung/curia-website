@@ -323,7 +323,7 @@ const FaqSection = () => {
   const faqs = [
     { q: 'Who is Curia for?',                        a: 'Curia is designed for experienced CEOs, founders, and principals whose work is buried across email, calendar, relationships, research, and recurring follow-through. It is especially useful for leaders who know what a strong executive office should do and want more continuity, control, and institutional memory.' },
     // Managed-practice FAQs hidden while the managed section is dark (see ManagedSection).
-    { q: 'Can I add my own desks?',                  a: 'Yes. A Curia desk is a specialist agent with a defined mandate, selected tools, scoped memory, permissions, and an optional schedule. You can add new desks without granting every agent access to everything. Curia ships with 90+ built-in skills, and it speaks the Model Context Protocol (MCP), so external tools wire straight in.' },
+    { q: 'Can I add my own desks?',                  a: 'Yes. A Curia desk is a specialist agent with a defined mandate, selected tools, scoped memory, permissions, and an optional schedule. You can add new desks without granting every agent access to everything. Curia ships with 90+ built-in tools, and it speaks the Model Context Protocol (MCP), so external tools wire straight in.' },
     { q: 'Where does Curia run?',                    a: "Anywhere you can run Docker and Node: your laptop, a VPS, your own VPC, or on-premises. It is a single-tenant, self-hosted deployment: you hold the keys, and your data stays on your infrastructure, apart from the context Curia sends to the model provider you configure." },
     {
       q: 'Is Curia secure?',
@@ -334,9 +334,9 @@ const FaqSection = () => {
         </>
       ),
     },
-    { q: 'How does the audit trail work?',           a: 'Every action (read, draft, send, decision) is recorded with a timestamp, the actor, the model, and SHA-256 fingerprints of the prompt and response. Append-only Postgres with causal tracing across every event. Secrets never touch the LLM; only skills hold credentials, and every access is logged.' },
+    { q: 'How does the audit trail work?',           a: 'Every action (read, draft, send, decision) is recorded with a timestamp, the actor, the model, and SHA-256 fingerprints of the prompt and response. Append-only Postgres with causal tracing across every event. Secrets never touch the LLM; only tools hold credentials, and every access is logged.' },
     { q: 'Is Curia an executive assistant replacement?', a: 'Curia can own many persistent responsibilities normally handled by an executive assistant or chief of staff, but it is not a person and should not be described as one. It is strongest when given clear standing mandates, connected tools, explicit permissions, and defined escalation rules.' },
-    { q: 'Will the API surface change?',             a: 'After v1.0.0, no. v1.0.0 means the API surface is stable: agent contracts, skill manifests, channel adapters, the knowledge-graph query interface, the autonomy model, and configuration schemas all freeze. Self-hosters can rely on interfaces that will not break between releases.' },
+    { q: 'Will the API surface change?',             a: 'After v1.0.0, no. v1.0.0 means the API surface is stable: agent contracts, tool manifests, channel adapters, the knowledge-graph query interface, the autonomy model, and configuration schemas all freeze. Self-hosters can rely on interfaces that will not break between releases.' },
     { q: 'What does it cost to run?',                a: 'The software is free and MIT-licensed. Your only costs are the infrastructure you run it on and your own LLM API usage. There is no per-seat fee and nothing to buy.' },
     {
       q: 'What support do you have?',
