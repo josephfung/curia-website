@@ -35,6 +35,10 @@ const GROUPS = [
           'Repeated failures',
         ],
         result: 'Process your inbox deliberately once or twice a day without trusting luck to surface the important message.',
+        image: {
+          src: '/assets/capabilities/inbox.jpg', width: 1600, height: 951,
+          alt: 'Gmail inbox where Curia has labelled each message Cleared, Seen, or Handled, with label counts in the sidebar.',
+        },
       },
       {
         heading: 'Know exactly what is still open',
@@ -61,6 +65,10 @@ const GROUPS = [
           'Conflicting priorities',
         ],
         result: 'One coherent view of your open loops instead of reconstructing it from email, calendar entries, notes, and memory.',
+        image: {
+          src: '/assets/capabilities/open-tasks.jpg', width: 1600, height: 942,
+          alt: 'Curia Tasks view filtered to open tasks, showing owner, status, age, and status counts across all tasks.',
+        },
       },
     ],
   },
@@ -117,6 +125,10 @@ const GROUPS = [
           'The task appears to have drifted from its original intent',
         ],
         result: 'Establish an operating rule once and rely on Curia to keep carrying it out months later.',
+        image: {
+          src: '/assets/capabilities/tell-once.jpg', width: 904, height: 730,
+          alt: 'Signal chat where the CEO asks Curia to search email history before asking for missing contact details, and Curia confirms the instruction is on file.',
+        },
       },
     ],
   },
@@ -173,6 +185,10 @@ const GROUPS = [
           "A contact's role or permissions are unclear",
         ],
         result: 'Ask “What do I know about this person?” and get an answer grounded in your own private history, not just a web search.',
+        image: {
+          src: '/assets/capabilities/contacts.jpg', width: 1600, height: 820,
+          alt: 'Curia Contacts view listing known people with their titles, organizations, trust tier, and last-updated dates.',
+        },
       },
     ],
   },
@@ -203,6 +219,10 @@ const GROUPS = [
           'A commitment conflicts with an existing one',
         ],
         result: 'A useful conversation does not depend on you remembering, hours later, to update five different systems.',
+        image: {
+          src: '/assets/capabilities/follow-up.jpg', width: 1600, height: 867,
+          alt: 'Curia chat after a meeting: Curia asks for follow-ups, the CEO lists two promised items, and Curia offers to find them and draft the note.',
+        },
       },
       {
         heading: 'Hand off a project, not just a prompt',
