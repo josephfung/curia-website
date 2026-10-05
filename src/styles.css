@@ -69,8 +69,9 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--m-rule);
 }
 .m-header-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  /* Vertical only: keep .m-container's horizontal gutter so the header isn't flush to the edges. */
+  padding-top: 18px; padding-bottom: 18px;
 }
 .m-wordmark {
   display: inline-flex; align-items: center;
@@ -84,7 +85,7 @@ a { color: inherit; text-decoration: none; }
 }
 .m-footer .m-wordmark img { height: 22px !important; }
 .m-nav { display: flex; gap: 28px; align-items: center; font-size: 14px; font-weight: 500; }
-.m-nav a { color: var(--m-ink-2); transition: color 120ms; }
+.m-nav a { color: var(--m-ink-2); transition: color 120ms; white-space: nowrap; }
 .m-nav a:hover { color: var(--m-ink); }
 .m-cta {
   font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px;
@@ -101,6 +102,9 @@ a { color: inherit; text-decoration: none; }
 .m-cta-ghost:hover { background: var(--m-ink); color: var(--m-bg); }
 .m-cta-icon { display: inline-flex; align-items: center; margin-right: 7px; flex-shrink: 0; }
 .m-header-actions { display: flex; gap: 10px; align-items: center; }
+.m-header-actions .m-cta { white-space: nowrap; }
+/* Header buttons swap to short labels on narrow viewports (see Responsive). */
+.m-label-short { display: none; }
 
 /* ─ Hero ─────────────────────────────────────────────────────────── */
 .m-hero { padding: 96px 0 80px; }
@@ -169,10 +173,6 @@ a { color: inherit; text-decoration: none; }
   padding: 8px 0; border-top: 1px solid var(--m-rule);
 }
 .m-pillar-list li:first-child { border-top: none; padding-top: 0; }
-.m-pillar-num {
-  font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 13px;
-  color: var(--m-ink-mute); letter-spacing: 0.08em;
-}
 .m-pillar-rule { width: 28px; height: 1px; background: var(--m-ink); margin-bottom: 4px; }
 .m-pillar-title {
   font-family: 'Lora', Georgia, serif; font-weight: 500;
@@ -292,7 +292,6 @@ a { color: inherit; text-decoration: none; }
 .m-section-dark .m-section-title { color: #F4EFE6; }
 .m-section-eyebrow-dark { color: #8FB7AE; }
 .m-section-dark .m-pillar-body { color: #C9C4B8; }
-.m-section-dark .m-pillar-num { color: #8FB7AE; }
 .m-section-dark .m-pillar-title { color: #F4EFE6; }
 .m-pillar-rule-dark { background: #8FB7AE; }
 .m-section-dark .m-section-lede { color: #C9C4B8; }
@@ -527,9 +526,7 @@ a { color: inherit; text-decoration: none; }
 .m-capdetail-media .m-evidence-ph-box { min-height: 300px; }
 .m-capdetail { margin: 0; }
 .m-capdetail-h { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 26px; line-height: 1.2; margin: 0 0 16px; }
-.m-capdetail-seq { font-family: 'Manrope', sans-serif; font-size: 15px; line-height: 1.6; color: var(--m-ink-2); margin: 16px 0; padding-left: 22px; }
-.m-capdetail-seq li { margin-bottom: 6px; }
-.m-capdetail-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 24px 0; }
+.m-capdetail-escalate { margin: 24px 0; }
 .m-capdetail-label { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--m-ink-mute); margin-bottom: 12px; }
 .m-capdetail-list { list-style: none; padding: 0; margin: 0; font-family: 'Manrope', sans-serif; font-size: 14px; line-height: 1.5; color: var(--m-ink-2); }
 .m-capdetail-list li { padding: 7px 0; border-top: 1px solid var(--m-rule); }
@@ -557,19 +554,28 @@ a { color: inherit; text-decoration: none; }
   .m-ladder { grid-template-columns: 1fr; gap: 36px; }
   .m-footer-grid { grid-template-columns: 1fr 1fr; }
   .m-section-managed { padding: 80px 0; }
-  .m-capdetail-cols { grid-template-columns: 1fr; gap: 24px; }
   .m-capdetail-row { grid-template-columns: 1fr; gap: 28px; margin-bottom: 56px; }
   .m-capdetail-row.flip .m-capdetail { order: 0; }
   .m-capdetail-row.flip .m-capdetail-media { order: 0; }
   .m-capdetail-media { position: static; }
   .m-capdetail-media .m-evidence-ph-box { min-height: 200px; }
+  .m-label-long { display: none; }
+  .m-label-short { display: inline; }
+}
+@media (max-width: 720px) {
+  /* Nav and header buttons no longer fit side by side; the footer repeats these links. */
+  .m-nav { display: none; }
 }
 @media (max-width: 560px) {
-  .m-container { padding: 0 20px; }
-  .m-nav { display: none; }
+  /* Horizontal only, so it does not wipe vertical padding on elements that also use .m-container. */
+  .m-container { padding-left: 20px; padding-right: 20px; }
   .m-hero { padding: 64px 0 56px; }
   .m-hero-title { font-size: 36px; }
   .m-footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  /* Smallest phones: drop header button icons so the logo and both buttons fit. */
+  .m-header-actions .m-cta-icon { display: none; }
 }
 
 /* Evidence placeholder — intentional styled slot for a sanitized screenshot */

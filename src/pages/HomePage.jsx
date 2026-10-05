@@ -15,8 +15,8 @@ const Hero = () => (
       </h1>
       <p className="m-hero-lede">
         Curia runs specialist desks for your inbox, calendar, relationships, and
-        ongoing work, each with a standing mandate and private memory. It acts on
-        the routine and brings you only what needs your judgment.
+        ongoing work. It handles the routine and brings you only what needs your
+        judgment.
       </p>
       <div className="m-hero-actions">
         <a className="m-cta" href="/capabilities">Explore</a>
@@ -31,36 +31,34 @@ const CapabilitiesSection = () => {
     {
       title: 'Check your inbox once a day',
       body: 'Curia triages your inbox every 15 minutes, drafts replies, and escalates anything urgent to Signal.',
-      outcome: 'Process your inbox deliberately without trusting luck to surface the important message.',
+      outcome: 'Process your inbox deliberately, not by luck.',
     },
     {
       title: 'Stop negotiating meeting times',
-      body: 'Curia checks calendars, time zones, and preferences, then proposes times and books the meeting.',
-      outcome: 'Stop spending five messages arranging a 20-minute call.',
+      body: 'Curia checks calendars, time zones, and preferences, then proposes times and books.',
+      outcome: 'No more five messages to arrange a 20-minute call.',
     },
     {
       title: 'Never lose a meeting follow-up',
-      body: 'After a meeting, Curia turns your takeaways into drafts, tasks, research, and reminders.',
-      outcome: 'A useful conversation no longer depends on you remembering to update five systems later.',
+      body: 'Curia turns your post-meeting takeaways into drafts, tasks, research, and reminders.',
+      outcome: 'Follow-through without updating five systems later.',
     },
     {
       title: 'Walk into important meetings prepared',
-      body: 'Curia briefs you on every attendee using your private history and fresh research.',
-      outcome: 'Arrive with both current research and your own relationship context.',
+      body: 'Curia briefs you on every attendee from your private history and fresh research.',
+      outcome: 'Arrive with research and relationship context.',
     },
   ];
   return (
     <section className="m-section" id="capabilities">
       <div className="m-container">
-        <div className="m-section-eyebrow">Capabilities</div>
         <h2 className="m-section-title">With Curia, you can&hellip;</h2>
         <div className="m-pillars m-pillars-4">
           {cards.map((c) => <CapabilityPreviewCard key={c.title} {...c} />)}
         </div>
         <p className="m-cap-bridge">
-          That is only the core office. Curia can also track open loops, maintain
-          private relationship memory, run standing orders, and carry multi-step
-          projects forward. <a href="/capabilities">Explore all capabilities &rarr;</a>
+          Curia also tracks open loops, remembers your relationships, runs standing
+          orders, and carries multi-step projects. <a href="/capabilities">Explore all capabilities &rarr;</a>
         </p>
       </div>
     </section>
@@ -69,15 +67,14 @@ const CapabilitiesSection = () => {
 
 const OperatingModelSection = () => {
   const items = [
-    { title: 'One Coordinator', body: 'You communicate with one Curia identity. It decides what it can handle directly and when to involve a specialist.' },
-    { title: 'Standing mandates', body: 'Each specialist knows what it watches, what it owns, which tools it can use, and where its authority ends.' },
-    { title: 'Shared context', body: 'Tasks, relationships, preferences, and prior work persist across conversations and system restarts.' },
-    { title: 'Governed execution', body: 'Permissions, autonomy levels, error limits, and audit records constrain what the office can do.' },
+    { title: 'One Coordinator', body: 'You talk to one Curia. It handles what it can and brings in specialists when needed.' },
+    { title: 'Standing mandates', body: 'Each desk knows what it watches, which tools it uses, and where its authority ends.' },
+    { title: 'Shared context', body: 'Tasks, relationships, and preferences persist across conversations and restarts.' },
+    { title: 'Governed execution', body: 'Permissions, autonomy levels, error limits, and an audit trail bound what the office can do.' },
   ];
   return (
     <section className="m-section" id="how-it-works">
       <div className="m-container">
-        <div className="m-section-eyebrow">How Curia works</div>
         <h2 className="m-section-title">One office. Unlimited specialist desks.</h2>
         <div className="m-pillars m-pillars-4">
           {items.map((it) => (
@@ -89,10 +86,8 @@ const OperatingModelSection = () => {
           ))}
         </div>
         <p className="m-cap-bridge">
-          The core office covers your inbox, calendar, meetings, relationships, and
-          research. The roster does not stop there: one CEO&rsquo;s office also runs an
-          editorial desk, an expense desk, and a social-monitoring desk, and you can add
-          a specialist for anything else. <a href="/capabilities#deployed-desks">See real examples &rarr;</a>
+          Beyond the core office, one CEO runs editorial, expense, and social desks,
+          and you can add your own. <a href="/capabilities#deployed-desks">See real examples &rarr;</a>
         </p>
       </div>
     </section>
@@ -102,20 +97,17 @@ const OperatingModelSection = () => {
 const GovernanceSection = () => {
   const trust = [
     {
-      n: '01',
       title: 'Open source.',
-      body: "Full codebase on GitHub under a permissive licence. Every line auditable. Your head of engineering can evaluate the architecture before you commit. A managed practice is offered on top by the maintainer, but the core platform stands on its own and is yours to run.",
+      body: 'The full codebase is on GitHub under the MIT licence. Your engineering lead can audit it before you commit, and it is yours to run.',
       foot: "Don’t take our word for it. Read the code.",
     },
     {
-      n: '02',
       title: 'Audit trail and accountability.',
-      body: 'Append-only: every action recorded, nothing deleted, and logged before it is delivered. Each entry carries the timestamp, actor, model, and SHA-256 fingerprints of the prompt and response, with causal tracing from any outcome back through the full decision chain. Secrets never touch the LLM.',
+      body: 'Every action is logged before it is delivered, in an append-only record of who acted, which model, and fingerprints of the prompt and response. Trace any outcome back through its decision chain. Secrets never touch the LLM.',
     },
     {
-      n: '03',
       title: 'Autonomy controls.',
-      body: 'You set the band, from "draft only" to "act independently." Five behavioural levels with clear, predictable boundaries. Intent-drift detection pauses the office when a task wanders from its original intent. Error budgets cap the number of LLM turns and consecutive errors per task. No infinite loops.',
+      body: 'Choose a level from "draft only" to "act independently." Curia pauses when a task drifts from its original intent, and error budgets stop runaway loops.',
     },
   ];
   const bands = [
@@ -129,7 +121,6 @@ const GovernanceSection = () => {
   return (
     <section className="m-section m-section-dark" id="governance">
       <div className="m-container">
-        <div className="m-section-eyebrow m-section-eyebrow-dark">Governance and trust</div>
         <h2 className="m-section-title">
           Why trust an office of agents with your inbox?
         </h2>
@@ -138,8 +129,7 @@ const GovernanceSection = () => {
         </p>
         <div className="m-trust">
           {trust.map((t) => (
-            <div className="m-trust-card" key={t.n}>
-              <div className="m-pillar-num">{t.n}</div>
+            <div className="m-trust-card" key={t.title}>
               <div className="m-pillar-rule m-pillar-rule-dark"></div>
               <h3 className="m-pillar-title">{t.title}</h3>
               <p className="m-pillar-body">{t.body}</p>
@@ -153,10 +143,8 @@ const GovernanceSection = () => {
           <div className="m-ladder">
             <div>
               <p className="m-pillar-body" style={{ marginBottom: 18 }}>
-                Yes, there is a literal slider in settings. That is the point.
-                Autonomy is a named, explicit contract between the principal and the
-                office: chosen on purpose, recorded in the audit trail, and revisited
-                on a cadence. Never a default you forgot you set.
+                Yes, there is a literal slider in settings. Autonomy is an explicit
+                choice, recorded in the audit trail, never a default you forgot you set.
               </p>
               <div className="m-ladder-active-band">
                 Currently selected · {bands[active].name} ({bands[active].num})
@@ -213,13 +201,12 @@ const GovernanceSection = () => {
 const GetStartedSection = () => (
   <section className="m-section" id="get-started">
     <div className="m-container">
-      <div className="m-section-eyebrow">Get started</div>
       <h2 className="m-section-title">Run your own Curia office.</h2>
       <div className="m-getstarted">
         <div>
           <p className="m-pillar-body" style={{ fontSize: 17, marginBottom: 28, maxWidth: 560 }}>
-            Curia is open source and single-tenant. Review the code, deploy it on
-            infrastructure you control, and extend it with your own desks and skills.
+            Open source and single-tenant. Review the code, deploy it on infrastructure
+            you control, and add your own desks.
           </p>
           <div className="m-hero-actions">
             <a className="m-cta" href="https://github.com/josephfung/curia">
@@ -321,28 +308,28 @@ const ManagedSection = () => (
 
 const FaqSection = () => {
   const faqs = [
-    { q: 'Who is Curia for?',                        a: 'Curia is designed for experienced CEOs, founders, and principals whose work is buried across email, calendar, relationships, research, and recurring follow-through. It is especially useful for leaders who know what a strong executive office should do and want more continuity, control, and institutional memory.' },
+    { q: 'Who is Curia for?',                        a: 'Experienced CEOs, founders, and principals whose work spans email, calendar, relationships, and follow-through, and who want an office with more continuity, control, and memory.' },
     // Managed-practice FAQs hidden while the managed section is dark (see ManagedSection).
-    { q: 'Can I add my own desks?',                  a: 'Yes. A Curia desk is a specialist agent with a defined mandate, selected tools, scoped memory, permissions, and an optional schedule. You can add new desks without granting every agent access to everything. Curia ships with 90+ built-in tools, and it speaks the Model Context Protocol (MCP), so external tools wire straight in.' },
-    { q: 'Where does Curia run?',                    a: "Anywhere you can run Docker and Node: your laptop, a VPS, your own VPC, or on-premises. It is a single-tenant, self-hosted deployment: you hold the keys, and your data stays on your infrastructure, apart from the context Curia sends to the model provider you configure." },
+    { q: 'Can I add my own desks?',                  a: 'Yes. A desk is a specialist agent with its own mandate, tools, memory, permissions, and schedule. Curia ships with 90+ built-in tools and supports the Model Context Protocol (MCP), so external tools plug straight in.' },
+    { q: 'Where does Curia run?',                    a: 'Anywhere you can run Docker and Node: a laptop, a VPS, your own VPC, or on-premises. It is single-tenant and self-hosted, so your data stays on your infrastructure, apart from what Curia sends to the model provider you configure.' },
     {
       q: 'Is Curia secure?',
       a: (
         <>
-          Curia is open source, so its security model is auditable rather than asserted. It runs single-tenant on infrastructure you control, secrets never touch the LLM, and every action lands in an append-only audit log. The codebase runs continuous dependency, static-analysis, secret, and supply-chain scanning. You can review its{' '}
+          Its security is auditable, not asserted. Curia runs single-tenant on your infrastructure, secrets never touch the LLM, every action is logged, and the codebase is continuously scanned. See its{' '}
           <a href="https://securityscorecards.dev/viewer/?uri=github.com/josephfung/curia">OpenSSF Scorecard</a>.
         </>
       ),
     },
-    { q: 'How does the audit trail work?',           a: 'Every action (read, draft, send, decision) is recorded with a timestamp, the actor, the model, and SHA-256 fingerprints of the prompt and response. Append-only Postgres with causal tracing across every event. Secrets never touch the LLM; only tools hold credentials, and every access is logged.' },
-    { q: 'Is Curia an executive assistant replacement?', a: 'Curia can own many persistent responsibilities normally handled by an executive assistant or chief of staff, but it is not a person and should not be described as one. It is strongest when given clear standing mandates, connected tools, explicit permissions, and defined escalation rules.' },
-    { q: 'Will the API surface change?',             a: 'After v1.0.0, no. v1.0.0 means the API surface is stable: agent contracts, tool manifests, channel adapters, the knowledge-graph query interface, the autonomy model, and configuration schemas all freeze. Self-hosters can rely on interfaces that will not break between releases.' },
-    { q: 'What does it cost to run?',                a: 'The software is free and MIT-licensed. Your only costs are the infrastructure you run it on and your own LLM API usage. There is no per-seat fee and nothing to buy.' },
+    { q: 'How does the audit trail work?',           a: 'Every read, draft, send, and decision is logged with a timestamp, actor, model, and SHA-256 fingerprints of the prompt and response, in append-only Postgres with causal tracing. Only tools hold credentials, and every access is logged.' },
+    { q: 'Is Curia an executive assistant replacement?', a: 'It can own many responsibilities an executive assistant or chief of staff would, but it is not a person. It works best with clear mandates, connected tools, explicit permissions, and defined escalation rules.' },
+    { q: 'Will the API surface change?',             a: 'Not after v1.0.0. From then on, agent contracts, tool manifests, channel adapters, the knowledge-graph interface, the autonomy model, and configuration schemas are frozen.' },
+    { q: 'What does it cost to run?',                a: 'The software is free under MIT. You pay only for your infrastructure and LLM API usage.' },
     {
       q: 'What support do you have?',
       a: (
         <>
-          Curia is open-source software you run yourself: self-service documentation, no warranty, and no support contract. If you would rather not run it alone, a managed instance is available.{' '}
+          Curia is self-supported: documentation, no warranty, no support contract. If you would rather not run it alone, a managed instance is available.{' '}
           <a href="https://calendly.com/jbfung/curia">Get in touch</a>.
         </>
       ),
@@ -352,7 +339,6 @@ const FaqSection = () => {
   return (
     <section className="m-section" id="faq">
       <div className="m-container">
-        <div className="m-section-eyebrow">Questions</div>
         <h2 className="m-section-title">A few that always come up.</h2>
         <div className="m-faq">
           {faqs.map((f, i) => (

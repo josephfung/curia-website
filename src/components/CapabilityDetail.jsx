@@ -10,30 +10,17 @@ const toParas = (d) => (Array.isArray(d) ? d : [d]);
 // reads as a rhythm rather than a wall of stacked blocks. The placeholder caption
 // is derived from the heading so there is one source of truth for the copy.
 // `image` ({ src, alt, width, height }) replaces the placeholder once a capture exists.
-const CapabilityDetail = ({ heading, description, sequence, makesItWork, bringsYouIn, result, image, index = 0 }) => (
+const CapabilityDetail = ({ heading, description, bringsYouIn, result, image, index = 0 }) => (
   <div className={`m-capdetail-row${index % 2 === 1 ? ' flip' : ''}`}>
     <article className="m-capdetail">
       <h3 className="m-capdetail-h">{heading}</h3>
       {toParas(description).map((p, i) => <p className="m-pillar-body" key={i}>{p}</p>)}
-      {sequence && (
-        <ol className="m-capdetail-seq">
-          {sequence.map((s, i) => <li key={i}>{s}</li>)}
-        </ol>
+      {bringsYouIn?.length > 0 && (
+        <div className="m-capdetail-escalate">
+          <div className="m-capdetail-label">Where Curia brings you in</div>
+          <ul className="m-capdetail-list">{bringsYouIn.map((m, i) => <li key={i}>{m}</li>)}</ul>
+        </div>
       )}
-      <div className="m-capdetail-cols">
-        {makesItWork?.length > 0 && (
-          <div>
-            <div className="m-capdetail-label">What makes it work</div>
-            <ul className="m-capdetail-list">{makesItWork.map((m, i) => <li key={i}>{m}</li>)}</ul>
-          </div>
-        )}
-        {bringsYouIn?.length > 0 && (
-          <div>
-            <div className="m-capdetail-label">Where Curia brings you in</div>
-            <ul className="m-capdetail-list">{bringsYouIn.map((m, i) => <li key={i}>{m}</li>)}</ul>
-          </div>
-        )}
-      </div>
       <p className="m-capdetail-result">{result}</p>
     </article>
     <div className="m-capdetail-media">

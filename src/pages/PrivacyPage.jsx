@@ -7,7 +7,6 @@ const PrivacyPage = () => (
     <MarketingHeader home={false} />
     <main className="m-section">
       <div className="m-container m-legal">
-        <div className="m-section-eyebrow">Legal</div>
         <h1 className="m-section-title">Privacy</h1>
         <p className="m-legal-updated">Last updated June 22, 2026</p>
 
