@@ -4,37 +4,21 @@ import MarketingFooter from '../components/MarketingFooter.jsx';
 import CapabilityDetail from '../components/CapabilityDetail.jsx';
 import OfficeDeskCard from '../components/OfficeDeskCard.jsx';
 
-// Eight responsibilities grouped into four named sections.
-// Copy verbatim from task brief — do not edit without updating the brief.
+// Eight responsibilities grouped into four named sections. Headings double as
+// screenshot captions and match the homepage preview cards, so change them together.
 const GROUPS = [
   {
     label: 'Protect your attention',
     capabilities: [
       {
         heading: 'Check your inbox once a day',
-        description: [
-          'Curia checks your inbox around the clock, every 15 minutes.',
-          'It classifies new messages, separates routine mail from items requiring action, drafts replies, and turns unresolved requests into tracked work. When something appears genuinely urgent, Curia alerts you through Signal rather than waiting for your next inbox review.',
-          'Routine actions can require approval at first, then become automatic within explicitly approved lanes.',
-        ],
-        makesItWork: [
-          'CEO Inbox agent',
-          'Email search, reading, labelling, drafting, and sending tools',
-          'Contact identities and prior sender context',
-          'Stored preferences and past instructions',
-          'Task backlog for unresolved work',
-          'Signal for urgent escalation',
-          'Approval and autonomy rules',
-        ],
+        description: 'Curia checks your inbox every 15 minutes, drafts replies, turns open requests into tasks, and alerts you on Signal when something is urgent. Routine actions can start with your approval and become automatic over time.',
         bringsYouIn: [
           'Ambiguous urgency',
           'Sensitive or high-impact replies',
-          'Requests outside approved authority',
-          'Conflicting instructions',
-          'Unverified or suspicious senders',
-          'Repeated failures',
+          'Requests outside its authority',
         ],
-        result: 'Process your inbox deliberately once or twice a day without trusting luck to surface the important message.',
+        result: 'Review your inbox once or twice a day without trusting luck to surface what matters.',
         image: {
           src: '/assets/capabilities/inbox.jpg', width: 1600, height: 951,
           alt: 'Gmail inbox where Curia has labelled each message Cleared, Seen, or Handled, with label counts in the sidebar.',
@@ -42,29 +26,13 @@ const GROUPS = [
       },
       {
         heading: 'Know exactly what is still open',
-        description: [
-          'Curia maintains a durable backlog of the work surrounding you.',
-          'It distinguishes work Curia owns, work waiting for you, work waiting for someone else, work intentionally deferred, work that has stalled, and work that hit an error. At any time you can ask what is waiting on you, what you are waiting on from others, what has gone quiet, and what Curia finished this week.',
-          'Longer-running work retains its progress between sessions and after system restarts.',
-        ],
-        makesItWork: [
-          'Goals and persistent tasks',
-          'Explicit task ownership',
-          'Status and progress records',
-          'Scheduled wake-ups for deferred work',
-          'Meeting, email, and message context',
-          'Error tracking and suspension',
-          'Restart-safe state in Postgres',
-        ],
+        description: 'Curia keeps one backlog of everything in flight: what it owns, what is waiting on you or someone else, and what has stalled. Progress persists between sessions, so nothing quietly disappears.',
         bringsYouIn: [
-          'Missing ownership',
-          'A task that requires a CEO decision',
+          'A decision only you can make',
           'A stalled external dependency',
-          'Repeated failure',
-          'Intent drift',
           'Conflicting priorities',
         ],
-        result: 'One coherent view of your open loops instead of reconstructing it from email, calendar entries, notes, and memory.',
+        result: 'One view of your open loops, instead of rebuilding it from email, calendar, and memory.',
         image: {
           src: '/assets/capabilities/open-tasks.jpg', width: 1600, height: 942,
           alt: 'Curia Tasks view filtered to open tasks, showing owner, status, age, and status counts across all tasks.',
@@ -77,54 +45,23 @@ const GROUPS = [
     capabilities: [
       {
         heading: 'Stop negotiating meeting times',
-        description: [
-          'Curia handles the administrative work between “we should meet” and a confirmed calendar event.',
-          'It checks availability, working hours, existing commitments, contact identities, and time zones. It proposes viable times, drafts or sends the scheduling messages, and creates or updates the event once a time is agreed.',
-        ],
-        makesItWork: [
-          'Calendar Specialist',
-          'Calendar read and write tools',
-          'Email drafting and sending tools',
-          'Stored scheduling preferences',
-          'Time-zone context',
-          'Contact identity resolution',
-          'Approval rules for external communication',
-        ],
+        description: 'Curia checks availability, preferences, and time zones, proposes times, handles the back-and-forth, and books the event once a time is agreed.',
         bringsYouIn: [
-          'Two important meetings genuinely conflict',
-          'The purpose of the meeting is unclear',
-          'An attendee is not verified',
-          'A proposed time violates protected preferences',
-          'Rescheduling could damage a relationship',
-          'External communication is outside the approved lane',
+          'Two important meetings conflict',
+          'A time would break your protected preferences',
+          'Rescheduling could strain a relationship',
         ],
-        result: 'Stop spending five messages arranging a 20-minute call while keeping control over meetings that actually compete for your time.',
+        result: 'No more five-message threads to arrange a 20-minute call.',
       },
       {
         heading: 'Tell Curia once and trust that it keeps happening',
-        description: [
-          'Curia can maintain standing orders that continue without you restating them: check for investor emails every Monday, review stalled commitments every Friday, begin board prep six weeks out, alert you when a specific person emails, track promises made by a date, or surface people to see when you travel to a city.',
-          'These are not reminders that disappear when a chat closes. Scheduled work and progress are stored durably, recurring jobs continue after restarts, and repeated failures are surfaced instead of silently ignored.',
-          'A standing order can also apply judgment. “When I travel to New York, suggest people to see” can weigh location, relationship importance, contact recency, open conversations, and the shape of the trip before presenting a shortlist.',
-        ],
-        makesItWork: [
-          'Persistent scheduled jobs',
-          'Calendar and event monitoring',
-          'Contact and relationship memory',
-          'Saved task state',
-          'Original intent anchor',
-          'Failure counting and suspension',
-          'Alert-channel escalation',
-        ],
+        description: 'Give Curia a standing order once, like reviewing stalled commitments every Friday or suggesting people to see when you travel, and it keeps carrying it out. Standing orders survive restarts, and failures are surfaced rather than silently dropped.',
         bringsYouIn: [
-          'The rule becomes ambiguous',
-          'Required data is unavailable',
-          'The output would trigger a sensitive external action',
-          'The original instruction conflicts with newer preferences',
-          'The job repeatedly fails',
-          'The task appears to have drifted from its original intent',
+          'The instruction becomes ambiguous',
+          'It conflicts with a newer preference',
+          'The job keeps failing',
         ],
-        result: 'Establish an operating rule once and rely on Curia to keep carrying it out months later.',
+        result: 'Set an operating rule once and rely on it months later.',
         image: {
           src: '/assets/capabilities/tell-once.jpg', width: 904, height: 730,
           alt: 'Signal chat where the CEO asks Curia to search email history before asking for missing contact details, and Curia confirms the instruction is on file.',
@@ -137,54 +74,23 @@ const GROUPS = [
     capabilities: [
       {
         heading: 'Walk into every important meeting prepared',
-        description: [
-          'Before an important meeting, Curia prepares a concise briefing on the people, organizations, and subjects involved.',
-          'It can combine the calendar invitation and attendee list, previous emails and meetings, facts and relationship history stored privately in Curia, outstanding commitments in either direction, relevant documents, recent developments, and focused web research. The briefing answers who you are meeting, how you know each other, what you have discussed, what they care about, what has changed, what you owe one another, and what you should ask.',
-        ],
-        makesItWork: [
-          'Contact Specialist',
-          'Research Analyst',
-          'Calendar and email history',
-          'Contact identity resolution',
-          'Private knowledge graph',
-          'Source and freshness metadata',
-          'Current external research',
-        ],
+        description: 'Before an important meeting, Curia briefs you on who you are meeting, how you know them, what you have discussed, what each side owes, and what has changed, combining your private history with fresh research.',
         bringsYouIn: [
-          'Conflicting identity records',
-          'Weak or stale relationship data',
-          'Research sources disagree',
-          'Sensitive information may not be appropriate for the briefing',
-          'A fact has low confidence',
-          'The meeting purpose is unclear',
+          'Identity records conflict',
+          'Sources disagree or facts are uncertain',
+          'Something may be too sensitive to include',
         ],
-        result: 'Arrive with both current research and your own private relationship context.',
+        result: 'Arrive with current research and your own relationship context.',
       },
       {
         heading: 'Remember everyone without updating a CRM',
-        description: [
-          'Curia maintains private relationship memory as work happens.',
-          'It resolves people across email addresses, calendar invitations, messaging accounts, companies, and roles. It captures useful facts from meetings and correspondence, links related people and organizations, and detects duplicate or conflicting records. It can preserve how you met, who introduced you, their role and organization, what they care about, your last meaningful interaction, important personal details, open commitments, and shared relationships.',
-          'This is not another CRM requiring constant manual updates. The record develops through the work Curia is already helping perform.',
-        ],
-        makesItWork: [
-          'Contact and identity resolution',
-          'Email participants',
-          'Calendar attendees',
-          'Structured entity memory',
-          'Knowledge-graph relationships',
-          'Source attribution',
-          'Confidence and freshness metadata',
-          'Deduplication and contradiction checks',
-        ],
+        description: 'Curia builds private relationship memory from the work it already does: how you met, what people care about, your last real conversation, and what is open between you. No manual updates.',
         bringsYouIn: [
-          'Two records may represent the same person',
-          'A new identity is self-claimed',
-          'Facts conflict at similar confidence',
-          'Sensitive information should not be stored automatically',
-          "A contact's role or permissions are unclear",
+          'Two records may be the same person',
+          'Facts conflict',
+          'Something sensitive should not be stored automatically',
         ],
-        result: 'Ask “What do I know about this person?” and get an answer grounded in your own private history, not just a web search.',
+        result: 'Ask “What do I know about this person?” and get an answer from your own history.',
         image: {
           src: '/assets/capabilities/contacts.jpg', width: 1600, height: 820,
           alt: 'Curia Contacts view listing known people with their titles, organizations, trust tier, and last-updated dates.',
@@ -197,28 +103,13 @@ const GROUPS = [
     capabilities: [
       {
         heading: 'Never lose a meeting follow-up',
-        description: [
-          'After a designated meeting ends, Curia asks for your takeaways while the conversation is still fresh.',
-          'You can reply naturally: “Send Sarah the report, research the question about Quebec, and remind me to reconnect in September.” Curia separates that response into the appropriate work. It can draft the email, create the research assignment, schedule the reminder, update the contact record, and add unresolved items to the task backlog.',
-        ],
-        makesItWork: [
-          'Meeting Debrief agent',
-          'Calendar events and attendee information',
-          'Email drafting tools',
-          'Research delegation',
-          'Contact and relationship memory',
-          'Task system',
-          'Scheduler',
-          'Coordinator delegation',
-        ],
+        description: 'When a meeting ends, Curia asks for your takeaways. Reply in plain language and it splits your answer into drafts, research, reminders, contact updates, and tasks.',
         bringsYouIn: [
           'Your note is ambiguous',
-          'A follow-up requires external authority Curia does not have',
-          'A remembered fact is sensitive or uncertain',
+          'A follow-up needs authority Curia does not have',
           'A deadline is missing',
-          'A commitment conflicts with an existing one',
         ],
-        result: 'A useful conversation does not depend on you remembering, hours later, to update five different systems.',
+        result: 'Follow-through no longer depends on you updating five systems hours later.',
         image: {
           src: '/assets/capabilities/follow-up.jpg', width: 1600, height: 867,
           alt: 'Curia chat after a meeting: Curia asks for follow-ups, the CEO lists two promised items, and Curia offers to find them and draft the note.',
@@ -226,30 +117,13 @@ const GROUPS = [
       },
       {
         heading: 'Hand off a project, not just a prompt',
-        description: [
-          'Curia can own work that takes multiple steps or unfolds over days: research three expansion markets and recommend one, coordinate prep for a quarterly planning session, collect missing inputs for a board package, work through a neglected inbox, monitor a competitor, or prepare a recurring weekly operating brief.',
-          'Curia breaks the objective into work, delegates to the appropriate specialist desks, saves progress, and resumes later. The original objective stays attached so the work does not gradually drift into something else.',
-        ],
-        makesItWork: [
-          'Persistent tasks',
-          'Saved progress',
-          'Intent anchors',
-          'Specialist agents',
-          'Shared working memory',
-          'Scheduled work sessions',
-          'Permission boundaries',
-          'Error budgets',
-          'Audit trail',
-        ],
+        description: 'Give Curia an outcome that takes days, like researching three markets and recommending one, or assembling a board package. It breaks the work down, delegates to specialist desks, saves progress, and keeps the original goal attached so the work does not drift.',
         bringsYouIn: [
-          'A decision changes the project direction',
-          'A task requires external authorization',
+          'A decision would change direction',
           'Important information is missing',
-          'Priorities conflict',
-          'The task reaches a budget or error limit',
-          'Intent drift is detected',
+          'The task hits its budget or error limit',
         ],
-        result: 'Delegate an outcome instead of manually driving every intermediate step.',
+        result: 'Delegate an outcome, not every intermediate step.',
       },
     ],
   },
@@ -260,13 +134,10 @@ const CapabilitiesPage = () => (
     <MarketingHeader home={false} />
     <main className="m-section">
       <div className="m-container">
-        <div className="m-section-eyebrow">Capabilities</div>
         <h1 className="m-section-title" style={{ marginBottom: 24 }}>What Curia can take off your plate</h1>
         <p className="m-hero-lede" style={{ marginBottom: 12 }}>Give Curia responsibility, not just prompts.</p>
         <p className="m-pillar-body" style={{ maxWidth: 720, marginBottom: 64 }}>
-          Curia&rsquo;s specialist desks can watch systems, preserve context, move routine
-          work forward, and bring you the decisions that require judgment. Each responsibility
-          below explains what Curia does, what makes it work, and where it brings you in.
+          Each responsibility below covers what Curia does and where it brings you in.
         </p>
 
         {(() => {
@@ -289,27 +160,24 @@ const CapabilitiesPage = () => (
         Reverse-coloured (dark) treatment, matching the homepage governance band. */}
     <section className="m-section m-section-dark" id="deployed-desks">
       <div className="m-container">
-        <div className="m-section-eyebrow m-section-eyebrow-dark">Live example</div>
         <h2 className="m-section-title">Desks one CEO added to a live office</h2>
         <p className="m-pillar-body" style={{ maxWidth: 720, marginBottom: 48 }}>
-          These are not hypothetical use cases. They are responsibilities one CEO added to a live
-          Curia office by defining a mandate, selecting tools, setting a schedule, scoping memory,
-          and writing explicit operating instructions. The point is not the specific desks. It is
-          that you can build the desks your own work needs.
+          These run in a live Curia office today, each with a mandate, chosen tools, a
+          schedule, scoped memory, and explicit limits. Build the desks your own work needs.
         </p>
 
         <div className="m-desk-grid">
           <OfficeDeskCard
             title="Editorial Desk"
-            body="Monitors the content pipeline, flags pieces approaching deadlines, surfaces drafts that have gone quiet, and sends a morning status each weekday. It has read access to the content calendar and drafts folder, write access only to its own notes, and no authority to contact contributors directly without approval."
+            body="Tracks the content pipeline, flags approaching deadlines and stalled drafts, and sends a morning status each weekday. Cannot contact contributors without approval."
           />
           <OfficeDeskCard
             title="Expense Desk"
-            body="Reviews submitted expenses against policy, checks for duplicates, flags anything requiring CFO approval, and logs each decision with its reasoning. It has read access to submitted receipts and the expense policy, write access to the approval log, and no authority to trigger payments."
+            body="Checks expenses against policy, catches duplicates, flags anything needing CFO approval, and logs each decision with its reasoning. Cannot trigger payments."
           />
           <OfficeDeskCard
             title="Social Desk"
-            body="Drafts posts for a social account based on a weekly brief, queues approved drafts, and reports on engagement each Monday morning. All posts require approval before publishing. It has write access to the draft queue only and no authority to publish directly."
+            body="Drafts posts from a weekly brief, queues them for approval, and reports engagement every Monday. Cannot publish directly."
           />
         </div>
       </div>
@@ -318,24 +186,20 @@ const CapabilitiesPage = () => (
     {/* Add-a-desk — travel as an example you could build, not a deployed desk */}
     <section className="m-section" id="add-a-desk">
       <div className="m-container m-adddesk">
-        <div className="m-section-eyebrow">Extend</div>
         <h2 className="m-section-title">Add another desk</h2>
         <p className="m-pillar-body">
-          A Curia desk is a specialist agent with a defined mandate, selected tools,
-          scoped memory, a schedule when needed, and explicit permissions. Adding a desk
-          expands the office without granting every agent access to everything.
+          A desk is a specialist agent with its own mandate, tools, memory, schedule, and
+          permissions. Adding one never gives every agent access to everything.
         </p>
         <ul className="m-adddesk-list">
           <li>Define the responsibility</li>
-          <li>Select the tools it may use</li>
-          <li>Limit the memory it can access</li>
+          <li>Choose its tools and memory</li>
           <li>Set its schedule or triggers</li>
-          <li>Choose which actions require approval</li>
-          <li>Record every action in the audit trail</li>
+          <li>Decide which actions need approval</li>
         </ul>
         <p className="m-pillar-body">
-          A travel desk that surfaces who to see when you visit a city, a diligence
-          desk, a hiring-pipeline desk: the same framework builds them all.
+          A travel desk, a diligence desk, a hiring-pipeline desk: the same framework
+          builds them all, and every action lands in the audit trail.
         </p>
         <div className="m-hero-actions">
           <a className="m-cta" href="https://docs.meetcuria.com/agents/building-custom-agents">Read the agent-building documentation</a>
