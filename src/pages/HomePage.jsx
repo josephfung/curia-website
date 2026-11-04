@@ -39,14 +39,14 @@ const CapabilitiesSection = () => {
       outcome: 'No more five messages to arrange a 20-minute call.',
     },
     {
-      title: 'Never lose a meeting follow-up',
-      body: 'Curia turns your post-meeting takeaways into drafts, tasks, research, and reminders.',
-      outcome: 'Follow-through without updating five systems later.',
+      title: 'Never let an action item slip',
+      body: 'Curia reminds you before things are due and chases others for what they owe.',
+      outcome: 'No more to-dos lost between meetings.',
     },
     {
-      title: 'Walk into important meetings prepared',
-      body: 'Curia briefs you on every attendee from your private history and fresh research.',
-      outcome: 'Arrive with research and relationship context.',
+      title: 'Supercharge every meeting',
+      body: 'Curia briefs you on your calendar, runs the agenda, takes minutes, and files follow-ups.',
+      outcome: 'Walk in prepared, walk out with it handled.',
     },
   ];
   return (
@@ -57,8 +57,8 @@ const CapabilitiesSection = () => {
           {cards.map((c) => <CapabilityPreviewCard key={c.title} {...c} />)}
         </div>
         <p className="m-cap-bridge">
-          Curia also tracks open loops, remembers your relationships, runs standing
-          orders, and carries multi-step projects. <a href="/capabilities">Explore all capabilities &rarr;</a>
+          Curia also keeps your notes for you, remembers your relationships, runs standing
+          orders, and stays online wherever you are. <a href="/capabilities">Explore all capabilities &rarr;</a>
         </p>
       </div>
     </section>
@@ -86,8 +86,8 @@ const OperatingModelSection = () => {
           ))}
         </div>
         <p className="m-cap-bridge">
-          Beyond the core office, one CEO runs editorial, expense, and social desks,
-          and you can add your own. <a href="/capabilities#deployed-desks">See real examples &rarr;</a>
+          Curia users have also set it up for bookkeeping, shared inboxes, editorial
+          pipelines, and meeting minutes, and you can do the same. <a href="/capabilities#deployed-desks">See how people use it &rarr;</a>
         </p>
       </div>
     </section>

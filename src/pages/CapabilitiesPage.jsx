@@ -5,7 +5,7 @@ import CapabilityDetail from '../components/CapabilityDetail.jsx';
 import OfficeDeskCard from '../components/OfficeDeskCard.jsx';
 
 // Eight responsibilities grouped into four named sections. Headings double as
-// screenshot captions and match the homepage preview cards, so change them together.
+// screenshot captions; the homepage preview cards reuse some of them, so change them together.
 const GROUPS = [
   {
     label: 'Protect your attention',
@@ -25,14 +25,14 @@ const GROUPS = [
         },
       },
       {
-        heading: 'Know exactly what is still open',
-        description: 'Curia keeps one backlog of everything in flight: what it owns, what is waiting on you or someone else, and what has stalled. Progress persists between sessions, so nothing quietly disappears.',
+        heading: 'Never let an action item slip',
+        description: 'Curia does not wait for you to check a list. It tracks every commitment in flight, reminds you before what you own is due, chases other people for what they owe you, and keeps raising anything that stalls until it is closed out.',
         bringsYouIn: [
           'A decision only you can make',
           'A stalled external dependency',
           'Conflicting priorities',
         ],
-        result: 'One view of your open loops, instead of rebuilding it from email, calendar, and memory.',
+        result: 'Stop worrying about the to-do you forgot to write down.',
         image: {
           src: '/assets/capabilities/open-tasks.jpg', width: 1600, height: 942,
           alt: 'Curia Tasks view filtered to open tasks, showing owner, status, age, and status counts across all tasks.',
@@ -73,14 +73,14 @@ const GROUPS = [
     label: 'Protect your context',
     capabilities: [
       {
-        heading: 'Walk into every important meeting prepared',
-        description: 'Before an important meeting, Curia briefs you on who you are meeting, how you know them, what you have discussed, what each side owes, and what has changed, combining your private history with fresh research.',
+        heading: 'Stop keeping notes',
+        description: 'Every email, meeting, call, and decision Curia handles feeds a private knowledge graph and document store that it builds and maintains on its own. People, companies, projects, and documents stay linked and current as facts change, so the record writes itself.',
         bringsYouIn: [
-          'Identity records conflict',
-          'Sources disagree or facts are uncertain',
-          'Something may be too sensitive to include',
+          'Two sources disagree',
+          'An update would overwrite something you set',
+          'Something sensitive should not be stored automatically',
         ],
-        result: 'Arrive with current research and your own relationship context.',
+        result: 'Ask “What did we decide about this?” and get the answer, without ever having written it down.',
       },
       {
         heading: 'Remember everyone without updating a CRM',
@@ -99,31 +99,37 @@ const GROUPS = [
     ],
   },
   {
-    label: 'Move work forward',
+    label: 'Keep work moving',
     capabilities: [
       {
-        heading: 'Never lose a meeting follow-up',
-        description: 'When a meeting ends, Curia asks for your takeaways. Reply in plain language and it splits your answer into drafts, research, reminders, contact updates, and tasks.',
-        bringsYouIn: [
-          'Your note is ambiguous',
-          'A follow-up needs authority Curia does not have',
-          'A deadline is missing',
+        heading: 'Supercharge every meeting',
+        description: [
+          'Before a meeting, Curia researches who you are meeting, how you know them, and what each side owes, then attaches a briefing note to the calendar event so it is waiting when you open it.',
+          'During it, Curia runs the agenda and takes the minutes, recording every decision and owner. Afterwards it asks for your takeaways: reply in plain language and it turns them into drafts, research, reminders, contact updates, and tasks.',
         ],
-        result: 'Follow-through no longer depends on you updating five systems hours later.',
+        bringsYouIn: [
+          'Sources disagree or facts are uncertain',
+          'An agenda or minutes need your sign-off before they go out',
+          'A follow-up needs authority Curia does not have',
+        ],
+        result: 'Walk in prepared. Walk out with the minutes, follow-ups, and tasks already handled.',
         image: {
           src: '/assets/capabilities/follow-up.jpg', width: 1600, height: 867,
           alt: 'Curia chat after a meeting: Curia asks for follow-ups, the CEO lists two promised items, and Curia offers to find them and draft the note.',
         },
       },
       {
-        heading: 'Hand off a project, not just a prompt',
-        description: 'Give Curia an outcome that takes days, like researching three markets and recommending one, or assembling a board package. It breaks the work down, delegates to specialist desks, saves progress, and keeps the original goal attached so the work does not drift.',
-        bringsYouIn: [
-          'A decision would change direction',
-          'Important information is missing',
-          'The task hits its budget or error limit',
+        heading: 'Reach your office wherever you are',
+        description: [
+          'Curia runs on its own server, not your laptop, so it stays online when your computer is closed and keeps working while you sleep, travel, or sit in back-to-back meetings.',
+          'Reach it however suits the moment: email, a message on Signal, or a phone call. Every channel shares the same memory, so you never have to repeat yourself.',
         ],
-        result: 'Delegate an outcome, not every intermediate step.',
+        bringsYouIn: [
+          'Something urgent needs you while you are away',
+          'A request arrives from someone it cannot verify',
+          'A job keeps failing while you are offline',
+        ],
+        result: 'Your office keeps running when you close the laptop.',
       },
     ],
   },
@@ -156,53 +162,68 @@ const CapabilitiesPage = () => (
         })()}
       </div>
     </main>
-    {/* Deployed desks — anchor target for homepage CTA and "See real examples" link.
+    {/* Real-world setups — anchor target for homepage CTA and "See real examples" link.
+        The id stays "deployed-desks" so existing links keep working.
         Reverse-coloured (dark) treatment, matching the homepage governance band. */}
     <section className="m-section m-section-dark" id="deployed-desks">
       <div className="m-container">
-        <h2 className="m-section-title">Desks one CEO added to a live office</h2>
+        <h2 className="m-section-title">How people are putting Curia to work</h2>
         <p className="m-pillar-body" style={{ maxWidth: 720, marginBottom: 48 }}>
-          These run in a live Curia office today, each with a mandate, chosen tools, a
-          schedule, scoped memory, and explicit limits. Build the desks your own work needs.
+          Each is a setup a Curia user configured for their own work: they described the
+          job, connected the tools it needed, and set the guardrails. That takes a short
+          setup, not an implementation project.
         </p>
 
         <div className="m-desk-grid">
           <OfficeDeskCard
-            title="Editorial Desk"
-            body="Tracks the content pipeline, flags approaching deadlines and stalled drafts, and sends a morning status each weekday. Cannot contact contributors without approval."
+            title="Editorial pipeline"
+            body="Tracks the content pipeline, flags approaching deadlines and stalled drafts, and sends a morning status each weekday."
           />
           <OfficeDeskCard
-            title="Expense Desk"
-            body="Checks expenses against policy, catches duplicates, flags anything needing CFO approval, and logs each decision with its reasoning. Cannot trigger payments."
+            title="Expense review"
+            body="Checks expenses against policy, catches duplicates, flags anything needing CFO approval, and logs each decision with its reasoning."
           />
           <OfficeDeskCard
-            title="Social Desk"
-            body="Drafts posts from a weekly brief, queues them for approval, and reports engagement every Monday. Cannot publish directly."
+            title="Social posting"
+            body="Drafts posts from a weekly brief, queues them for approval, and reports engagement every Monday."
+          />
+          <OfficeDeskCard
+            title="Bookkeeping"
+            body="Follows a family business's account workflows, categorizes transactions, and keeps QuickBooks up to date."
+          />
+          <OfficeDeskCard
+            title="Shared inboxes"
+            body="Watches the customer service and billing inboxes, triages each message, drafts replies, and makes sure nothing sits unanswered."
+          />
+          <OfficeDeskCard
+            title="Meeting secretary"
+            body="Prepares agendas, takes minutes, and chases every open action item until it is closed."
           />
         </div>
       </div>
     </section>
 
-    {/* Add-a-desk — travel as an example you could build, not a deployed desk */}
+    {/* Set up your own — travel etc. as examples you could build, not live setups */}
     <section className="m-section" id="add-a-desk">
       <div className="m-container m-adddesk">
-        <h2 className="m-section-title">Add another desk</h2>
+        <h2 className="m-section-title">Set Curia up for your own work</h2>
         <p className="m-pillar-body">
-          A desk is a specialist agent with its own mandate, tools, memory, schedule, and
-          permissions. Adding one never gives every agent access to everything.
+          Start from the job you want handled, not from a feature list. Each setup gets its
+          own mandate, tools, memory, and permissions, so adding one never gives Curia
+          access to everything.
         </p>
         <ul className="m-adddesk-list">
-          <li>Define the responsibility</li>
-          <li>Choose its tools and memory</li>
+          <li>Describe the job</li>
+          <li>Connect the tools and data it needs</li>
           <li>Set its schedule or triggers</li>
-          <li>Decide which actions need approval</li>
+          <li>Decide which actions need your approval</li>
         </ul>
         <p className="m-pillar-body">
-          A travel desk, a diligence desk, a hiring-pipeline desk: the same framework
-          builds them all, and every action lands in the audit trail.
+          Travel planning, investor diligence, a hiring pipeline: the same four steps cover
+          them all, and every action lands in the audit trail.
         </p>
         <div className="m-hero-actions">
-          <a className="m-cta" href="https://docs.meetcuria.com/agents/building-custom-agents">Read the agent-building documentation</a>
+          <a className="m-cta" href="https://docs.meetcuria.com/agents/building-custom-agents">Read the setup guide</a>
         </div>
       </div>
     </section>
