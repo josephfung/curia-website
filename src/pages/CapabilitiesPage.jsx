@@ -52,6 +52,10 @@ const GROUPS = [
           'Rescheduling could strain a relationship',
         ],
         result: 'No more five-message threads to arrange a 20-minute call.',
+        image: {
+          src: '/assets/capabilities/schedule.jpg', width: 1600, height: 1071,
+          alt: 'Email thread where a contact asks for a call, the CEO copies Curia, and Curia replies with four time options for next week.',
+        },
       },
       {
         heading: 'Tell Curia once and trust that it keeps happening',
