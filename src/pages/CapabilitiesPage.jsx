@@ -134,6 +134,10 @@ const GROUPS = [
           'A job keeps failing while you are offline',
         ],
         result: 'Your office keeps running when you close the laptop.',
+        image: {
+          src: '/assets/capabilities/always-on.jpg', width: 1600, height: 1104,
+          alt: 'Curia console home showing work handled since yesterday, a week of activity by agent, recent autonomous actions, and every channel reporting healthy.',
+        },
       },
     ],
   },
