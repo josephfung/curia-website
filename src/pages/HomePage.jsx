@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
 import CapabilityPreviewCard from '../components/CapabilityPreviewCard.jsx';
+import Faq from '../components/Faq.jsx';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
 
@@ -193,6 +194,10 @@ const GovernanceSection = () => {
             <div className="m-audit-row"><span className="ts">09:21:34</span><span className="ev">task.created · owner=curia · source=ceo-inbox</span></div>
           </div>
         </div>
+        <p className="m-cap-bridge">
+          Self-hosting changes who you have to trust.{' '}
+          <a href="/governance">Learn more about Curia&rsquo;s security and governance&nbsp;&rarr;</a>
+        </p>
       </div>
     </section>
   );
@@ -317,7 +322,8 @@ const FaqSection = () => {
       a: (
         <>
           Its security is auditable, not asserted. Curia runs single-tenant on your infrastructure, secrets never touch the LLM, every action is logged, and the codebase is continuously scanned. See its{' '}
-          <a href="https://securityscorecards.dev/viewer/?uri=github.com/josephfung/curia">OpenSSF Scorecard</a>.
+          <a href="https://securityscorecards.dev/viewer/?uri=github.com/josephfung/curia">OpenSSF Scorecard</a>, or read{' '}
+          <a href="/governance">how Curia approaches security and governance</a>.
         </>
       ),
     },
@@ -335,34 +341,11 @@ const FaqSection = () => {
       ),
     },
   ];
-  const [open, setOpen] = useState(0);
   return (
     <section className="m-section" id="faq">
       <div className="m-container">
         <h2 className="m-section-title">A few that always come up.</h2>
-        <div className="m-faq">
-          {faqs.map((f, i) => (
-            <div key={i} className="m-faq-row">
-              <div
-                className="m-faq-q"
-                onClick={() => setOpen(open === i ? -1 : i)}
-                role="button"
-                tabIndex={0}
-                aria-expanded={open === i}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    if (e.key === ' ') e.preventDefault();
-                    setOpen(open === i ? -1 : i);
-                  }
-                }}
-              >
-                <span className="m-faq-q-text">{f.q}</span>
-                <span className="m-faq-q-toggle">{open === i ? '−' : '+'}</span>
-              </div>
-              {open === i && <div className="m-faq-a">{f.a}</div>}
-            </div>
-          ))}
-        </div>
+        <Faq items={faqs} />
       </div>
     </section>
   );
