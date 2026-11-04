@@ -11,7 +11,7 @@ const MarketingHeader = ({ home = true }) => (
       </a>
       <nav className="m-nav" aria-label="Primary">
         <a href="/capabilities">Capabilities</a>
-        <a href={home ? '#governance' : '/#governance'}>Governance</a>
+        <a href="/governance">Governance</a>
         <a href={home ? '#get-started' : '/#get-started'}>Get started</a>
       </nav>
       <div className="m-header-actions">

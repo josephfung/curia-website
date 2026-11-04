@@ -2,6 +2,7 @@ import React from 'react';
 import HomePage from './pages/HomePage.jsx';
 import CapabilitiesPage from './pages/CapabilitiesPage.jsx';
 import PrivacyPage from './pages/PrivacyPage.jsx';
+import GovernancePage from './pages/GovernancePage.jsx';
 import { useRouteMetadata } from './lib/useRouteMetadata.js';
 
 // Tiny path-based router — no router dependency for a small static site.
@@ -13,6 +14,7 @@ const App = () => {
   useRouteMetadata(path);
   if (path === '/privacy') return <PrivacyPage />;
   if (path === '/capabilities') return <CapabilitiesPage />;
+  if (path === '/governance') return <GovernancePage />;
   return <HomePage />;
 };
 

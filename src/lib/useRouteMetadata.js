@@ -18,6 +18,12 @@ const META = {
     description:
       'See how Curia handles inbox triage, scheduling, meeting follow-up, relationship memory, research, standing orders, and multi-step executive work.',
   },
+  '/governance': {
+    // em-dash in brand title is the allowed exception; do not remove
+    title: 'Curia Governance — Private by Design, Yours to Keep',
+    description:
+      'Why hosting your own agent beats trusting a platform: no ads, no honeypot, secrets the AI never sees, an audit trail you own, and your choice of model.',
+  },
 };
 
 // The homepage defaults, used to restore metadata when leaving a non-home route.
