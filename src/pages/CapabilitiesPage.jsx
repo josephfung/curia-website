@@ -52,6 +52,10 @@ const GROUPS = [
           'Rescheduling could strain a relationship',
         ],
         result: 'No more five-message threads to arrange a 20-minute call.',
+        image: {
+          src: '/assets/capabilities/schedule.jpg', width: 1600, height: 1071,
+          alt: 'Email thread where a contact asks for a call, the CEO copies Curia, and Curia replies with four time options for next week.',
+        },
       },
       {
         heading: 'Tell Curia once and trust that it keeps happening',
@@ -81,6 +85,10 @@ const GROUPS = [
           'Something sensitive should not be stored automatically',
         ],
         result: 'Ask “What did we decide about this?” and get the answer, without ever having written it down.',
+        image: {
+          src: '/assets/capabilities/knowledge.jpg', width: 1600, height: 910,
+          alt: 'Curia Knowledge Graph view linking people, organizations, projects, meetings, and decisions around the CEO, colored by type.',
+        },
       },
       {
         heading: 'Remember everyone without updating a CRM',
@@ -130,6 +138,10 @@ const GROUPS = [
           'A job keeps failing while you are offline',
         ],
         result: 'Your office keeps running when you close the laptop.',
+        image: {
+          src: '/assets/capabilities/always-on.jpg', width: 1600, height: 1104,
+          alt: 'Curia console home showing work handled since yesterday, a week of activity by agent, recent autonomous actions, and every channel reporting healthy.',
+        },
       },
     ],
   },
