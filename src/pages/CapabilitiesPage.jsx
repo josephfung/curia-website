@@ -85,6 +85,10 @@ const GROUPS = [
           'Something sensitive should not be stored automatically',
         ],
         result: 'Ask “What did we decide about this?” and get the answer, without ever having written it down.',
+        image: {
+          src: '/assets/capabilities/knowledge.jpg', width: 1600, height: 910,
+          alt: 'Curia Knowledge Graph view linking people, organizations, projects, meetings, and decisions around the CEO, colored by type.',
+        },
       },
       {
         heading: 'Remember everyone without updating a CRM',
