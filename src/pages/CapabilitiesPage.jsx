@@ -12,7 +12,7 @@ const GROUPS = [
     capabilities: [
       {
         heading: 'Check your inbox once a day',
-        description: 'Curia checks your inbox every 15 minutes, drafts replies, turns open requests into tasks, and alerts you on Signal when something is urgent. Routine actions can start with your approval and become automatic over time.',
+        description: 'Curia checks every mailbox you connect, work and personal, every 15 minutes. It drafts replies, turns open requests into tasks, and alerts you when something is urgent. Once you allow it, Curia sends routine replies itself, at most ten a day, and tells you which ones it held back and why.',
         bringsYouIn: [
           'Ambiguous urgency',
           'Sensitive or high-impact replies',
@@ -130,7 +130,8 @@ const GROUPS = [
         heading: 'Reach your office wherever you are',
         description: [
           'Curia runs on its own server, not your laptop, so it stays online when your computer is closed and keeps working while you sleep, travel, or sit in back-to-back meetings.',
-          'Reach it however suits the moment: email, a message on Signal, or a phone call. Every channel shares the same memory, so you never have to repeat yourself.',
+          'Reach it however suits the moment: email, a message on Signal, a phone call, or the Curia app on your phone. Every channel shares the same memory, so you never have to repeat yourself.',
+          'When you call, Curia can work through an agenda it has saved up for you, then send the minutes and handle the follow-up.',
         ],
         bringsYouIn: [
           'Something urgent needs you while you are away',
