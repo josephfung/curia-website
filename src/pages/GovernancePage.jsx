@@ -22,7 +22,7 @@ const PRINCIPLES = [
   },
   {
     title: 'The AI never sees your secrets.',
-    body: 'Keys go from the vault straight to the tool, never to the model. By design, not by policy.',
+    body: 'Keys, passwords, and card numbers go from the vault straight to the tool, never to the model. By design, not by policy.',
   },
   {
     title: 'Your data, your custody.',
@@ -75,6 +75,14 @@ const FAQS = [
   {
     q: 'How does Curia handle emails that try to trick it?',
     a: 'Curia checks who sent each message before acting on it. Instructions from unverified senders are treated as information, not commands, and work that drifts from a task’s original intent is paused for you. We red-team Curia against these attacks, and prompt injection is in scope for security reports.',
+  },
+  {
+    q: 'Will Curia share my personal information?',
+    a: 'Only when you have asked it to. Before a message carries anyone’s personal details, Curia checks who authorised sharing each one. Your own instruction releases what you asked for. A request from anyone else, or a detail picked up from a quoted thread, comes to you first.',
+  },
+  {
+    q: 'What happens when Curia uses a website for me?',
+    a: 'It works in a separate, sandboxed browser that holds none of Curia’s secrets and cannot reach your private network. Passwords are filled in from the vault only at the moment they are needed, and sign-in codes are scrubbed from Curia’s notes and memory.',
   },
   {
     q: 'Do I need to be technical to run Curia safely?',

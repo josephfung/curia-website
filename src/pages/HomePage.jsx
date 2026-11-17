@@ -31,7 +31,7 @@ const CapabilitiesSection = () => {
   const cards = [
     {
       title: 'Check your inbox once a day',
-      body: 'Curia triages your inbox every 15 minutes, drafts replies, and escalates anything urgent to Signal.',
+      body: 'Curia triages your work and personal inboxes every 15 minutes, drafts replies, and escalates anything urgent to your phone.',
       outcome: 'Process your inbox deliberately, not by luck.',
     },
     {
@@ -108,15 +108,15 @@ const GovernanceSection = () => {
     },
     {
       title: 'Autonomy controls.',
-      body: 'Choose a level from "draft only" to "act independently." Curia pauses when a task drifts from its original intent, and error budgets stop runaway loops.',
+      body: 'Choose a level from "draft only" to "act independently." Anything Curia writes in your name is fact-checked before it goes, money and legal always come to you, and Curia pauses when a task drifts from its original intent.',
     },
   ];
   const bands = [
     { num: '<60', name: 'Restricted',        desc: 'Options and analysis only. No independent action; every external effect needs explicit instruction.' },
     { num: '60',  name: 'Draft Only',        desc: 'Prepares drafts, plans, and analysis. Never sends or acts without a direct go-ahead.' },
     { num: '70',  name: 'Approval Required', desc: 'Routine reads proceed; any consequential action is planned and brought for confirmation first.' },
-    { num: '80',  name: 'Spot-check',        desc: 'Acts on routine work; notes consequential actions in its reply so you keep visibility.' },
-    { num: '90',  name: 'Full',              desc: 'Acts independently; flags only genuinely novel, irreversible, or high-stakes actions.' },
+    { num: '80',  name: 'Spot-check',        desc: 'Acts on routine work after a fact check; asks first before any commitment, money, or legal matter.' },
+    { num: '90',  name: 'Full',              desc: 'Acts independently after a fact check; still asks first on anything involving money or legal.' },
   ];
   const [active, setActive] = useState(3); // Spot-check
   return (
@@ -231,7 +231,7 @@ const GetStartedSection = () => (
         <div className="m-prereqs">
           <div className="m-prereqs-title">Prerequisites</div>
           <ul className="m-prereqs-list">
-            <li><span className="m-mono">node</span><span>≥ 24</span></li>
+            <li><span className="m-mono">node</span><span>≥ 26</span></li>
             <li><span className="m-mono">docker</span><span>Postgres + pgvector</span></li>
             <li><span className="m-mono">pnpm</span><span>package manager</span></li>
             <li><span className="m-mono">api key</span><span>Anthropic</span></li>
@@ -315,7 +315,7 @@ const FaqSection = () => {
   const faqs = [
     { q: 'Who is Curia for?',                        a: 'Experienced CEOs, founders, and principals whose work spans email, calendar, relationships, and follow-through, and who want an office with more continuity, control, and memory.' },
     // Managed-practice FAQs hidden while the managed section is dark (see ManagedSection).
-    { q: 'Can I add my own desks?',                  a: 'Yes. A desk is a specialist agent with its own mandate, tools, memory, permissions, and schedule. Curia ships with 90+ built-in tools and supports the Model Context Protocol (MCP), so external tools plug straight in.' },
+    { q: 'Can I add my own desks?',                  a: 'Yes. A desk is a specialist agent with its own mandate, tools, memory, permissions, and schedule. Curia ships with 140+ built-in tools and supports the Model Context Protocol (MCP), so external tools plug straight in.' },
     { q: 'Where does Curia run?',                    a: 'Anywhere you can run Docker and Node: a laptop, a VPS, your own VPC, or on-premises. It is single-tenant and self-hosted, so your data stays on your infrastructure, apart from what Curia sends to the model provider you configure.' },
     {
       q: 'Is Curia secure?',
