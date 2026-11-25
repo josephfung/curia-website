@@ -209,10 +209,27 @@ const GetStartedSection = () => (
       <h2 className="m-section-title">Run your own Curia office.</h2>
       <div className="m-getstarted">
         <div>
-          <p className="m-pillar-body" style={{ fontSize: 17, marginBottom: 28, maxWidth: 560 }}>
+          <p className="m-pillar-body" style={{ fontSize: 17, marginBottom: 20, maxWidth: 560 }}>
             Open source and single-tenant. Review the code, deploy it on infrastructure
             you control, and add your own desks.
           </p>
+          <div className="m-phases">
+            <div className="m-phases-title">Getting started has two phases</div>
+            <div className="m-phase">
+              <div className="m-phase-name">Setup</div>
+              <p>
+                Whoever runs Curia. About 5 minutes to install, then an hour or two to connect:
+                Curia&rsquo;s own email, a way to message you, a voice, and access to Google Docs.
+              </p>
+            </div>
+            <div className="m-phase">
+              <div className="m-phase-name">Onboarding</div>
+              <p>
+                You, the executive. Curia invites you to a first conversation, by voice or chat,
+                and takes it from there.
+              </p>
+            </div>
+          </div>
           <div className="m-hero-actions">
             <a className="m-cta" href="https://github.com/josephfung/curia">
               <span className="m-gh-mark" aria-hidden="true">
@@ -222,27 +239,27 @@ const GetStartedSection = () => (
               </span>
               View on GitHub
             </a>
-            <a className="m-cta m-cta-ghost" href="https://docs.meetcuria.com">Read the docs</a>
+            <a className="m-cta m-cta-ghost" href="https://docs.meetcuria.com/get-started/what-to-expect">What to expect</a>
           </div>
           <div className="m-getstarted-note">
             MIT-licensed · Self-host on your own infrastructure · Browser-based setup
           </div>
         </div>
         <div className="m-prereqs">
-          <div className="m-prereqs-title">Prerequisites</div>
+          <div className="m-prereqs-title">To install</div>
           <ul className="m-prereqs-list">
-            <li><span className="m-mono">node</span><span>≥ 26</span></li>
-            <li><span className="m-mono">docker</span><span>Postgres + pgvector</span></li>
-            <li><span className="m-mono">pnpm</span><span>package manager</span></li>
-            <li><span className="m-mono">api key</span><span>Anthropic</span></li>
+            <li><span className="m-mono">docker</span><span>with Compose</span></li>
+            <li><span className="m-mono">curl</span><span>to fetch the installer</span></li>
+            <li><span className="m-mono">api key</span><span>Anthropic (required)</span></li>
+            <li><span className="m-mono">domain</span><span>for HTTPS, set up for you</span></li>
           </ul>
           <div className="m-prereqs-cmd">
             <span className="ts">$</span>
-            <span>git clone github.com/josephfung/curia</span>
+            <span>curl -fsSLO https://github.com/josephfung/curia/releases/latest/download/install.sh</span>
           </div>
           <div className="m-prereqs-cmd">
             <span className="ts">$</span>
-            <span>cd curia &amp;&amp; pnpm run setup</span>
+            <span>bash install.sh</span>
           </div>
         </div>
       </div>
@@ -316,7 +333,7 @@ const FaqSection = () => {
     { q: 'Who is Curia for?',                        a: 'Experienced CEOs, founders, and principals whose work spans email, calendar, relationships, and follow-through, and who want an office with more continuity, control, and memory.' },
     // Managed-practice FAQs hidden while the managed section is dark (see ManagedSection).
     { q: 'Can I add my own desks?',                  a: 'Yes. A desk is a specialist agent with its own mandate, tools, memory, permissions, and schedule. Curia ships with 140+ built-in tools and supports the Model Context Protocol (MCP), so external tools plug straight in.' },
-    { q: 'Where does Curia run?',                    a: 'Anywhere you can run Docker and Node: a laptop, a VPS, your own VPC, or on-premises. It is single-tenant and self-hosted, so your data stays on your infrastructure, apart from what Curia sends to the model provider you configure.' },
+    { q: 'Where does Curia run?',                    a: 'Anywhere you can run Docker: a laptop, a VPS, your own VPC, or on-premises. It is single-tenant and self-hosted, so your data stays on your infrastructure, apart from what Curia sends to the model provider you configure.' },
     {
       q: 'Is Curia secure?',
       a: (
