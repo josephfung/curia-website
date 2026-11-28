@@ -11,8 +11,12 @@ export default function SignalScene({ view, reduced, motionOn }) {
         <span className="sig-name">{view.contact}</span>
       </header>
       <div className="sig-thread">
-        {view.messages.map((message) => (
-          <Enter key={message.id} fresh={motionOn && message.id === view.freshId} reduced={reduced}>
+        {view.messages.map((message, index) => (
+          <Enter
+            key={message.id}
+            fresh={index === 0 || (motionOn && message.id === view.freshId)}
+            reduced={reduced}
+          >
             <div className={`sig-bubble sig-${message.side}`}>
               <p>{message.body}</p>
             </div>

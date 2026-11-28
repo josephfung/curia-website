@@ -5,9 +5,12 @@ import { initial, tone } from './faces.js'
 export default function SlackScene({ view, reduced, motionOn }) {
   return (
     <article className="slackapp">
-      {view.messages.map((message) => (
+      {view.messages.map((message, index) => (
         <div key={message.id}>
-          <Enter fresh={motionOn && message.id === view.freshId} reduced={reduced}>
+          <Enter
+            fresh={index === 0 || (motionOn && message.id === view.freshId)}
+            reduced={reduced}
+          >
             <div className="sk-msg">
               <span className="sk-avatar" style={{ background: tone(message.from) }} aria-hidden="true">
                 {initial(message.from)}

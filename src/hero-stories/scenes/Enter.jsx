@@ -1,17 +1,19 @@
-import { motion } from 'motion/react'
+import { useEffect, useState } from 'react'
 
-const ease = [0.22, 1, 0.36, 1]
+export default function Enter({ fresh, reduced, delay = 0, children }) {
+  const [open, setOpen] = useState(!fresh || reduced)
 
-export default function Enter({ fresh, reduced, children }) {
+  useEffect(() => {
+    if (!fresh || reduced) return undefined
+    const id = window.setTimeout(() => setOpen(true), Math.round(delay * 1000))
+    return () => window.clearTimeout(id)
+  }, [fresh, reduced, delay])
+
   if (reduced || !fresh) return <div>{children}</div>
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28, height: 0 }}
-      animate={{ opacity: 1, y: 0, height: 'auto' }}
-      transition={{ duration: 0.55, ease }}
-      style={{ overflow: 'hidden' }}
-    >
-      {children}
-    </motion.div>
+    <div className={`rise${open ? ' is-open' : ''}`}>
+      <div className="rise-inner">{children}</div>
+    </div>
   )
 }

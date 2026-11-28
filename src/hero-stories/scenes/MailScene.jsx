@@ -32,17 +32,23 @@ export default function MailScene({ view, reduced, motionOn }) {
 
   return (
     <article className="gmail">
-      {quietRows.map((row) => (
-        <Row
-          key={row.id}
-          from={row.from}
-          subject={row.subject}
-          snippet={row.snippet}
-          time={row.time}
-        />
+      {quietRows.map((row, index) => (
+        <Enter key={row.id} fresh delay={0.05 + index * 0.16} reduced={reduced}>
+          <Row
+            from={row.from}
+            subject={row.subject}
+            snippet={row.snippet}
+            time={row.time}
+          />
+        </Enter>
       ))}
       {thread.messages.map((message) => (
-        <Enter key={message.id} fresh={motionOn && message.id === freshId} reduced={reduced}>
+        <Enter
+          key={message.id}
+          fresh={message.id === 'incoming' || (motionOn && message.id === freshId)}
+          delay={message.id === 'incoming' ? 0.05 + quietRows.length * 0.16 : 0}
+          reduced={reduced}
+        >
           <div className="g-msg">
             {message.id === 'incoming' && <h2 className="g-title g-title-in">{thread.subject}</h2>}
             <div className="g-msg-row">
