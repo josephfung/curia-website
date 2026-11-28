@@ -3,26 +3,27 @@ import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
 import CapabilityPreviewCard from '../components/CapabilityPreviewCard.jsx';
 import Faq from '../components/Faq.jsx';
+import HeroStories from '../hero-stories/HeroStories.jsx';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
 
 const Hero = () => (
   <section className="m-hero">
-    <div className="m-container">
-      <div className="m-eyebrow">Digital Office of the CEO</div>
-      <h1 className="m-hero-title">
-        You run the company.<br />
-        <em>Curia runs the office.</em>
-      </h1>
-      <p className="m-hero-lede">
-        Curia runs specialist desks for your inbox, calendar, relationships, and
-        ongoing work. It handles the routine and brings you only what needs your
-        judgment.
-      </p>
-      <div className="m-hero-actions">
-        <a className="m-cta" href="/capabilities">Explore</a>
-        <a className="m-cta m-cta-ghost" href="https://github.com/josephfung/curia">View on GitHub</a>
+    <div className="m-container m-hero-layout">
+      <div className="m-hero-copy">
+        <p className="m-hero-kicker">Private, open-source AI executive assistant</p>
+        <h1 className="m-hero-title">It knows when to take it from here.</h1>
+        <p className="m-hero-lede">
+          Curia picks up the scheduling thread, keeps an eye on work you’ve handed
+          over, and gets a reply ready when something needs you. You decide when it
+          can act on your behalf.
+        </p>
+        <div className="m-hero-actions">
+          <a className="m-cta" href="https://calendly.com/jbfung/curia">Talk to Joseph</a>
+          <a className="m-cta m-cta-ghost" href="https://github.com/josephfung/curia">View on GitHub</a>
+        </div>
       </div>
+      <HeroStories />
     </div>
   </section>
 );

@@ -250,8 +250,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ─ Evidence ─────────────────────────────────────────────────────── */
 .m-evidence {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start;
 }
+.m-evidence > * { min-width: 0; }
 .m-pullquote {
   font-family: 'Lora', Georgia, serif; font-weight: 500; font-style: italic;
   font-size: 28px; line-height: 1.35; letter-spacing: -0.005em;
@@ -589,7 +590,7 @@ a { color: inherit; text-decoration: none; }
   .m-section-title-managed { font-size: 32px; }
   .m-pillars { grid-template-columns: 1fr; gap: 36px; }
   .m-pillars-4 { grid-template-columns: 1fr; gap: 36px; }
-  .m-evidence { grid-template-columns: 1fr; gap: 36px; }
+  .m-evidence { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .m-ladder { grid-template-columns: 1fr; gap: 36px; }
   .m-footer-grid { grid-template-columns: 1fr 1fr; }
   .m-section-managed { padding: 80px 0; }
