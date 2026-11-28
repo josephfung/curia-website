@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
 import Faq from '../components/Faq.jsx';
 import DelegationSection from '../components/DelegationSection.jsx';
+import TrustSection from '../components/TrustSection.jsx';
+import IntegrationsSection from '../components/IntegrationsSection.jsx';
 import HeroStories from '../hero-stories/HeroStories.jsx';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
@@ -21,114 +23,6 @@ const Hero = () => (
     </div>
   </section>
 );
-
-const GovernanceSection = () => {
-  const trust = [
-    {
-      title: 'Open source.',
-      body: 'The full codebase is on GitHub under the MIT licence. Your engineering lead can audit it before you commit, and it is yours to run.',
-      foot: "Don’t take our word for it. Read the code.",
-    },
-    {
-      title: 'Audit trail and accountability.',
-      body: 'Every action is logged before it is delivered, in an append-only record of who acted, which model, and fingerprints of the prompt and response. Trace any outcome back through its decision chain. Secrets never touch the LLM.',
-    },
-    {
-      title: 'Autonomy controls.',
-      body: 'Choose a level from "draft only" to "act independently." Anything Curia writes in your name is fact-checked before it goes, money and legal always come to you, and Curia pauses when a task drifts from its original intent.',
-    },
-  ];
-  const bands = [
-    { num: '<60', name: 'Restricted',        desc: 'Options and analysis only. No independent action; every external effect needs explicit instruction.' },
-    { num: '60',  name: 'Draft Only',        desc: 'Prepares drafts, plans, and analysis. Never sends or acts without a direct go-ahead.' },
-    { num: '70',  name: 'Approval Required', desc: 'Routine reads proceed; any consequential action is planned and brought for confirmation first.' },
-    { num: '80',  name: 'Spot-check',        desc: 'Acts on routine work after a fact check; asks first before any commitment, money, or legal matter.' },
-    { num: '90',  name: 'Full',              desc: 'Acts independently after a fact check; still asks first on anything involving money or legal.' },
-  ];
-  const [active, setActive] = useState(3); // Spot-check
-  return (
-    <section className="m-section m-section-dark" id="governance">
-      <div className="m-container">
-        <h2 className="m-section-title">
-          Why trust an office of agents with your inbox?
-        </h2>
-        <p className="m-section-lede">
-          Three answers, built into the system. Not bolted on.
-        </p>
-        <div className="m-trust">
-          {trust.map((t) => (
-            <div className="m-trust-card" key={t.title}>
-              <div className="m-pillar-rule m-pillar-rule-dark"></div>
-              <h3 className="m-pillar-title">{t.title}</h3>
-              <p className="m-pillar-body">{t.body}</p>
-              {t.foot && <div className="m-trust-foot">{t.foot}</div>}
-            </div>
-          ))}
-        </div>
-
-        <div className="m-ladder-wrap">
-          <div className="m-section-eyebrow m-section-eyebrow-dark">The autonomy ladder</div>
-          <div className="m-ladder">
-            <div>
-              <p className="m-pillar-body" style={{ marginBottom: 18 }}>
-                Yes, there is a literal slider in settings. Autonomy is an explicit
-                choice, recorded in the audit trail, never a default you forgot you set.
-              </p>
-              <div className="m-ladder-active-band">
-                Currently selected · {bands[active].name} ({bands[active].num})
-              </div>
-            </div>
-            <div className="m-ladder-rail">
-              {bands.map((b, i) => (
-                <div
-                  key={b.num}
-                  className={`m-ladder-row${i === active ? ' active' : ''}`}
-                  onClick={() => setActive(i)}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={i === active}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      if (e.key === ' ') e.preventDefault();
-                      setActive(i);
-                    }
-                  }}
-                >
-                  <span className="m-ladder-num">{b.num}</span>
-                  <span className="m-ladder-name">{b.name}</span>
-                  <span className="m-ladder-desc">{b.desc}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="m-evidence">
-          <div>
-            <blockquote className="m-pullquote">
-              This is what was decided, this is who decided it, this is the trail you can hand to your auditor.
-            </blockquote>
-            <div className="m-pullquote-attr">Curia operating principle</div>
-          </div>
-          <div className="m-audit" aria-label="Sample audit trail">
-            <div className="m-audit-row"><span className="ts">09:14:02</span><span className="ev">inbound.message · channel=email · sender=unverified</span></div>
-            <div className="m-audit-row"><span className="ts">09:14:02</span><span className="ev">contact.resolved · status=verified</span></div>
-            <div className="m-audit-row"><span className="ts">09:14:05</span><span className="ev">llm.call · agent=ceo-inbox · classify · model=fast</span></div>
-            <div className="m-audit-row"><span className="ts">09:14:06</span><span className="ev">agent.task · coordinator → ceo-inbox</span></div>
-            <div className="m-audit-row"><span className="ts">09:14:07</span><span className="ev">human.decision · gate=urgency · channel=signal</span></div>
-            <div className="m-audit-row"><span className="ts">09:14:08</span><span className="ev">outbound.delivered · channel=signal</span></div>
-            <div className="m-audit-row"><span className="ts">09:21:33</span><span className="ev">inbound.message · ceo reply</span></div>
-            <div className="m-audit-row"><span className="ts">09:21:34</span><span className="ev">task.created · owner=curia · source=ceo-inbox</span></div>
-          </div>
-        </div>
-        <p className="m-cap-bridge">
-          Self-hosting changes who you have to trust.{' '}
-          <a href="/governance">Learn more about Curia&rsquo;s security and governance&nbsp;&rarr;</a>
-        </p>
-      </div>
-    </section>
-  );
-};
 
 const GetStartedSection = () => (
   <section className="m-section" id="get-started">
@@ -301,7 +195,8 @@ const HomePage = () => (
     <MarketingHeader />
     <Hero />
     <DelegationSection />
-    <GovernanceSection />
+    <TrustSection />
+    <IntegrationsSection />
     <GetStartedSection />
     <ManagedSection />
     <FaqSection />

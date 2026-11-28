@@ -247,6 +247,57 @@ a { color: inherit; text-decoration: none; }
   .m-deleg-panel { transition: none; }
 }
 
+/* ─ Trust cards ──────────────────────────────────────────────────── */
+.m-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+  align-items: start;
+}
+.m-trust-art { display: block; width: 100%; height: auto; }
+.m-trust-card h3 {
+  font-family: 'Lora', Georgia, serif; font-weight: 500;
+  font-size: 26px; line-height: 1.25; margin: 18px 0 8px; color: var(--m-ink);
+}
+.m-trust-card p {
+  font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.5;
+  color: var(--m-ink-2); margin: 0;
+}
+.m-trust-links {
+  display: flex; flex-wrap: wrap; gap: 12px 32px;
+  margin: 36px 0 0;
+}
+.m-trust-links a {
+  color: var(--m-teal); font-family: 'Manrope', sans-serif;
+  font-weight: 650; font-size: 16px; text-decoration: none;
+}
+.m-trust-links a:hover { text-decoration: underline; }
+.m-trust-links a:focus-visible { outline: 2px solid var(--m-ink); outline-offset: 3px; }
+
+/* ─ Integrations ─────────────────────────────────────────────────── */
+.m-integrations-title { max-width: 16em; margin-bottom: 14px; }
+.m-integrations-lede {
+  font-family: 'Manrope', sans-serif; font-size: 18px; line-height: 1.5;
+  color: var(--m-ink-2); margin: 0; max-width: 36em;
+}
+.m-logo-row {
+  display: flex; flex-wrap: wrap; justify-content: flex-start;
+  align-items: center; gap: 28px 40px;
+  list-style: none; margin: 40px 0 0; padding: 0;
+}
+.m-logo-row li {
+  display: flex; align-items: center; justify-content: center;
+  width: 64px; height: 56px;
+}
+.m-logo-row img {
+  display: block; width: auto; height: 44px; max-width: 56px;
+  object-fit: contain;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
 /* ─ Pillars ──────────────────────────────────────────────────────── */
 .m-pillars {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px;
@@ -701,6 +752,9 @@ a { color: inherit; text-decoration: none; }
   .m-deleg-preview { grid-area: preview; }
   .m-deleg-mark { grid-area: mark; }
   .m-deleg-duties { columns: 1; }
+  .m-trust-grid { grid-template-columns: 1fr; gap: 32px; }
+  .m-logo-row { justify-content: center; gap: 20px 12px; }
+  .m-logo-row li { width: 30%; }
   /* Nav and header buttons no longer fit side by side; the footer repeats these links. */
   .m-nav { display: none; }
   /* Below this the wide diagram's text gets too small; switch to the tall layout. */
