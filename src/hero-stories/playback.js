@@ -252,8 +252,33 @@ export function createPlayback(stories, options) {
     emit()
   }
 
+  function jump(index) {
+    if (index < 0 || index >= stories.length) return
+    if (state.reducedMotion) {
+      select(index)
+      return
+    }
+    generation += 1
+    stopTimer()
+    wait = null
+    state.storyIndex = index
+    state.beatIndex = 0
+    state.mode = 'auto'
+    state.phase = 'live'
+    state.userPaused = false
+    state.focusPaused = false
+    state.hoverPaused = false
+    state.ignoreHover = true
+    state.revision += 1
+    emit()
+    queueFromHere()
+  }
+
   function focusLeave() {
     state.focusArmed = true
+    if (!state.focusPaused) return
+    state.focusPaused = false
+    if (canRun()) queueFromHere()
   }
 
   function setHidden(hidden) {
@@ -308,6 +333,7 @@ export function createPlayback(stories, options) {
       return () => listeners.delete(listener)
     },
     select,
+    jump,
     pause,
     play,
     replay,

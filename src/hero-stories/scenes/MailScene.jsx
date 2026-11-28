@@ -1,55 +1,87 @@
-import { motion } from 'motion/react'
 import Enter from './Enter.jsx'
+import { initial, tone } from './faces.js'
+
+function Avatar({ name }) {
+  return (
+    <span className="g-avatar" style={{ background: tone(name) }} aria-hidden="true">
+      {initial(name)}
+    </span>
+  )
+}
+
+function Row({ from, subject, snippet, time, unread }) {
+  return (
+    <div className={`g-row${unread ? ' is-unread' : ''}`}>
+      <Avatar name={from} />
+      <div className="g-main">
+        <div className="g-topline">
+          <span className="g-from">{from}</span>
+          <time className="g-time">{time}</time>
+        </div>
+        <div className="g-subjectline">
+          <span className="g-subject">{subject}</span>
+          {snippet && <span className="g-snippet">{snippet}</span>}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function MailScene({ view, reduced, motionOn }) {
   const { thread, invite, quietRows, freshId } = view
   const expanded = thread.expanded
 
   return (
-    <article className="mail">
-      <div className="surface-label">Inbox</div>
-      <div className={`mail-thread${thread.unread ? ' is-unread' : ''}`}>
-        <div className="mail-row">
-          <div className="mail-row-main">
-            <div className="mail-from">{thread.fromLine}</div>
-            <div className="mail-subject">{thread.subject}</div>
-            {!expanded && <p className="mail-snippet">{thread.snippet}</p>}
-          </div>
-          <time className="mail-time">{thread.time}</time>
+    <article className="gmail">
+      {!expanded && (
+        <div className="g-list">
+          <Row
+            from={thread.participants[0]}
+            subject={thread.subject}
+            snippet={thread.snippet}
+            time={thread.time}
+            unread={thread.unread}
+          />
+          {quietRows.map((row) => (
+            <Row
+              key={row.id}
+              from={row.from}
+              subject={row.subject}
+              snippet={row.snippet}
+              time={row.time}
+            />
+          ))}
         </div>
-        <motion.div
-          className="mail-thread-body"
-          initial={false}
-          animate={{ height: expanded ? 'auto' : 0, opacity: expanded ? 1 : 0 }}
-          transition={{ duration: reduced ? 0 : 0.32, ease: [0.22, 1, 0.36, 1] }}
-        >
+      )}
+      {expanded && (
+        <div className="g-open">
+          <h2 className="g-title">{thread.subject}</h2>
           {thread.messages.map((message) => (
             <Enter key={message.id} fresh={motionOn && message.id === freshId} reduced={reduced}>
-              <div className={`mail-msg${message.from === 'Nathan' ? ' is-nathan' : ''}`}>
-                <div className="mail-msg-from">{message.from}</div>
-                <p>{message.body}</p>
+              <div className="g-msg">
+                <Avatar name={message.from} />
+                <div>
+                  <div className="g-from">{message.from}</div>
+                  <p>{message.body}</p>
+                </div>
               </div>
             </Enter>
           ))}
-        </motion.div>
-      </div>
-      {quietRows.map((row) => (
-        <div className="mail-row is-quiet" key={row.id}>
-          <div className="mail-row-main">
-            <div className="mail-from">{row.from}</div>
-            <div className="mail-subject">{row.subject}</div>
-            <p className="mail-snippet">{row.snippet}</p>
-          </div>
-          <time className="mail-time">{row.time}</time>
         </div>
-      ))}
+      )}
       {invite && (
         <Enter fresh={motionOn && freshId === 'invite'} reduced={reduced}>
-          <div className="mail-invite">
-            <div className="mail-invite-kicker">Invitation</div>
-            <div className="mail-invite-title">{invite.title}</div>
-            <div className="mail-invite-when">{invite.when}</div>
-            <div className="mail-invite-who">Organizer: {invite.organizer}</div>
+          <div className="g-event">
+            <div className="g-cal" aria-hidden="true">
+              <span>Today</span>
+              <strong>2:30</strong>
+            </div>
+            <div>
+              <div className="g-event-kicker">Invitation</div>
+              <div className="g-event-title">{invite.title}</div>
+              <div className="g-event-when">{invite.when}</div>
+              <div className="g-event-who">Organizer: {invite.organizer}</div>
+            </div>
           </div>
         </Enter>
       )}

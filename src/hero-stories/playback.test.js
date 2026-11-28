@@ -162,16 +162,26 @@ describe('hero playback', () => {
     expect(playback.getState().mode).toBe('auto')
   })
 
-  it('stops on focus until Play, including after the pointer leaves', () => {
+  it('pauses while focused and resumes when focus leaves', () => {
     const playback = clock()
     vi.advanceTimersByTime(1000)
     playback.focusEnter()
-    playback.focusLeave()
     vi.advanceTimersByTime(20000)
     expect(playback.getState().beatIndex).toBe(0)
-    playback.play()
+    playback.focusLeave()
     vi.advanceTimersByTime(2000)
     expect(playback.getState().beatIndex).toBe(1)
+  })
+
+  it('starts a chosen story from the beginning and keeps rotating', () => {
+    const playback = clock()
+    vi.advanceTimersByTime(3000)
+    playback.jump(2)
+    expect(playback.getState().storyId).toBe('introductions')
+    expect(playback.getState().beatIndex).toBe(0)
+    expect(playback.getState().mode).toBe('auto')
+    vi.advanceTimersByTime(60000)
+    expect(playback.getState().storyId).not.toBe('introductions')
   })
 
   it('shows the finished exchange and does not rotate when reduced motion is on', () => {

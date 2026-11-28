@@ -57,6 +57,7 @@ export function useStoryPlayback(stories) {
 
   const actions = useMemo(() => ({
     select: (index) => playbackRef.current?.select(index),
+    jump: (index) => playbackRef.current?.jump(index),
     pause: () => playbackRef.current?.pause(),
     play: () => playbackRef.current?.play(),
     replay: () => playbackRef.current?.replay(),
