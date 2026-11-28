@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import MarketingHeader from '../components/MarketingHeader.jsx';
 import MarketingFooter from '../components/MarketingFooter.jsx';
-import CapabilityPreviewCard from '../components/CapabilityPreviewCard.jsx';
 import Faq from '../components/Faq.jsx';
+import DelegationSection from '../components/DelegationSection.jsx';
 import HeroStories from '../hero-stories/HeroStories.jsx';
 
 /* Asset paths are absolute — files live in public/assets/ and are served at /assets/ */
@@ -21,74 +21,6 @@ const Hero = () => (
     </div>
   </section>
 );
-
-const CapabilitiesSection = () => {
-  const cards = [
-    {
-      title: 'Check your inbox once a day',
-      body: 'Curia triages your work and personal inboxes every 15 minutes, drafts replies, and escalates anything urgent to your phone.',
-      outcome: 'Process your inbox deliberately, not by luck.',
-    },
-    {
-      title: 'Stop negotiating meeting times',
-      body: 'Curia checks calendars, time zones, and preferences, then proposes times and books.',
-      outcome: 'No more five messages to arrange a 20-minute call.',
-    },
-    {
-      title: 'Never let an action item slip',
-      body: 'Curia reminds you before things are due and chases others for what they owe.',
-      outcome: 'No more to-dos lost between meetings.',
-    },
-    {
-      title: 'Supercharge every meeting',
-      body: 'Curia briefs you on your calendar, runs the agenda, takes minutes, and files follow-ups.',
-      outcome: 'Walk in prepared, walk out with it handled.',
-    },
-  ];
-  return (
-    <section className="m-section" id="capabilities">
-      <div className="m-container">
-        <h2 className="m-section-title">With Curia, you can&hellip;</h2>
-        <div className="m-pillars m-pillars-4">
-          {cards.map((c) => <CapabilityPreviewCard key={c.title} {...c} />)}
-        </div>
-        <p className="m-cap-bridge">
-          Curia also keeps your notes for you, remembers your relationships, runs standing
-          orders, and stays online wherever you are. <a href="/capabilities">Explore all capabilities &rarr;</a>
-        </p>
-      </div>
-    </section>
-  );
-};
-
-const OperatingModelSection = () => {
-  const items = [
-    { title: 'One Coordinator', body: 'You talk to one Curia. It handles what it can and brings in specialists when needed.' },
-    { title: 'Standing mandates', body: 'Each desk knows what it watches, which tools it uses, and where its authority ends.' },
-    { title: 'Shared context', body: 'Tasks, relationships, and preferences persist across conversations and restarts.' },
-    { title: 'Governed execution', body: 'Permissions, autonomy levels, error limits, and an audit trail bound what the office can do.' },
-  ];
-  return (
-    <section className="m-section" id="how-it-works">
-      <div className="m-container">
-        <h2 className="m-section-title">One office. Unlimited specialist desks.</h2>
-        <div className="m-pillars m-pillars-4">
-          {items.map((it) => (
-            <div className="m-pillar" key={it.title}>
-              <div className="m-pillar-rule"></div>
-              <h3 className="m-pillar-title">{it.title}</h3>
-              <p className="m-pillar-body">{it.body}</p>
-            </div>
-          ))}
-        </div>
-        <p className="m-cap-bridge">
-          Curia users have also set it up for bookkeeping, shared inboxes, editorial
-          pipelines, and meeting minutes, and you can do the same. <a href="/capabilities#deployed-desks">See how people use it &rarr;</a>
-        </p>
-      </div>
-    </section>
-  );
-};
 
 const GovernanceSection = () => {
   const trust = [
@@ -368,8 +300,7 @@ const HomePage = () => (
   <>
     <MarketingHeader />
     <Hero />
-    <CapabilitiesSection />
-    <OperatingModelSection />
+    <DelegationSection />
     <GovernanceSection />
     <GetStartedSection />
     <ManagedSection />

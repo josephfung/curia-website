@@ -41,7 +41,7 @@
 }
 .hero-window {
   position: relative;
-  height: 420px;
+  height: 360px;
   overflow: hidden;
 }
 .hero-window.is-fading {
@@ -338,7 +338,6 @@
 .sk-file-status.is-sent { color: #007a5a; }
 
 @media (max-width: 880px) {
-  .hero-window { height: 360px; }
   .m-hero { padding: 48px 0 56px; }
   .m-hero-layout { gap: 32px; }
   .m-hero-layout .m-hero-title { font-size: 48px; }
