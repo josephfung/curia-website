@@ -7,7 +7,7 @@ export default function MailScene({ view, reduced, motionOn }) {
 
   return (
     <article className="mail">
-      <header className="mail-bar">Inbox</header>
+      <div className="surface-label">Inbox</div>
       <div className={`mail-thread${thread.unread ? ' is-unread' : ''}`}>
         <div className="mail-row">
           <div className="mail-row-main">
@@ -25,7 +25,7 @@ export default function MailScene({ view, reduced, motionOn }) {
         >
           {thread.messages.map((message) => (
             <Enter key={message.id} fresh={motionOn && message.id === freshId} reduced={reduced}>
-              <div className="mail-msg">
+              <div className={`mail-msg${message.from === 'Nathan' ? ' is-nathan' : ''}`}>
                 <div className="mail-msg-from">{message.from}</div>
                 <p>{message.body}</p>
               </div>

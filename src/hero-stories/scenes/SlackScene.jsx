@@ -8,7 +8,7 @@ function initial(name) {
 export default function SlackScene({ view, reduced, motionOn }) {
   return (
     <article className="slack">
-      <header className="slack-bar">Direct message</header>
+      <div className="surface-label">Direct message</div>
       {view.messages.map((message) => (
         <div key={message.id}>
           <Enter fresh={motionOn && message.id === view.freshId} reduced={reduced}>

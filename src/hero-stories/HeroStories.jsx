@@ -85,6 +85,7 @@ export default function HeroStories() {
         if (!event.currentTarget.contains(event.relatedTarget)) actions.focusLeave()
       }}
     >
+    <div className="hero-sheet">
       <p className="hero-who">Nathan, Joseph’s AI executive assistant.</p>
       <div className="hero-tabs" role="tablist" aria-label="Stories" onKeyDown={onTabsKeyDown}>
         {stories.map((item, index) => {
@@ -140,6 +141,7 @@ export default function HeroStories() {
           </button>
         </div>
       )}
+    </div>
     </div>
   )
 }
