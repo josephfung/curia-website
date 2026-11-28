@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 // when navigating away from another route.
 const META = {
   '/': {
-    title: 'Curia — A Persistent Digital Office for CEOs',
+    title: 'Curia — Private, open-source AI executive assistant',
     description:
       'One point of contact backed by specialist desks for your inbox, calendar, meetings, relationships, research, and ongoing work. Open source and self-hosted.',
-    ogTitle: 'Curia — An Executive Office Behind One Point of Contact',
+    ogTitle: 'Curia — Private, open-source AI executive assistant',
     ogDescription:
       'Curia runs specialist desks with standing mandates, private memory, explicit permissions, and clear escalation rules.',
   },

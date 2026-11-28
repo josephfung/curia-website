@@ -158,6 +158,146 @@ a { color: inherit; text-decoration: none; }
   margin: -32px 0 56px;
 }
 
+/* ─ Delegation accordion ─────────────────────────────────────────── */
+.m-deleg, .m-deleg-anchor { scroll-margin-top: 96px; }
+.m-deleg-anchor { position: absolute; }
+.m-deleg-title { margin-bottom: 14px; max-width: 14em; }
+.m-deleg-intro {
+  font-family: 'Manrope', sans-serif; font-size: 18px; line-height: 1.5;
+  color: var(--m-ink-2); max-width: 40em; margin: 0 0 28px;
+}
+.m-deleg-item { border-top: 1px solid var(--m-rule); }
+.m-deleg-item:last-child { border-bottom: 1px solid var(--m-rule); }
+.m-deleg-heading { margin: 0; font-size: inherit; font-weight: inherit; }
+.m-deleg-btn {
+  display: grid;
+  grid-template-columns: minmax(14em, 0.9fr) minmax(0, 1.4fr) auto;
+  gap: 8px 28px;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 20px 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.m-deleg-btn:focus-visible { outline: 2px solid var(--m-ink); outline-offset: 3px; }
+.m-deleg-name {
+  font-family: 'Lora', Georgia, serif; font-weight: 500;
+  font-size: 24px; line-height: 1.25; color: var(--m-ink);
+}
+.m-deleg-preview {
+  font-family: 'Manrope', sans-serif; font-size: 15px; line-height: 1.45;
+  color: var(--m-ink-2); min-width: 0;
+}
+.m-deleg-mark {
+  font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 500;
+  line-height: 1; color: var(--m-ink); width: 1.2em; text-align: center;
+}
+.m-deleg-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms ease;
+}
+.m-deleg-panel.is-open { grid-template-rows: 1fr; }
+.m-deleg-panel-clip { overflow: hidden; min-height: 0; }
+.m-deleg-duties {
+  columns: 2; column-gap: 48px;
+  list-style: none; margin: 4px 0 0; padding: 0 4px 0 0;
+}
+.m-deleg-duties li {
+  break-inside: avoid;
+  position: relative;
+  padding: 7px 0 7px 16px;
+  font-family: 'Manrope', sans-serif; font-size: 15px; line-height: 1.45;
+  color: var(--m-ink);
+}
+.m-deleg-duties li::before {
+  content: '';
+  position: absolute; left: 0; top: 0.72em;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--m-teal);
+}
+.m-deleg-example {
+  margin: 16px 0 22px;
+  padding: 14px 18px;
+  background: var(--m-bg-alt);
+  border-radius: 8px;
+}
+.m-deleg-example p {
+  margin: 0;
+  font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 500;
+  font-size: 17px; line-height: 1.45; color: var(--m-ink);
+}
+.m-deleg-close {
+  font-family: 'Manrope', sans-serif; font-size: 17px; line-height: 1.55;
+  color: var(--m-ink-2); max-width: 40em; margin: 28px 0 12px;
+}
+.m-deleg-more { margin: 0; }
+.m-deleg-more a {
+  color: var(--m-teal); font-family: 'Manrope', sans-serif;
+  font-weight: 650; font-size: 16px; text-decoration: none;
+}
+.m-deleg-more a:hover { text-decoration: underline; }
+.m-deleg-more a:focus-visible { outline: 2px solid var(--m-ink); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .m-deleg-panel { transition: none; }
+}
+
+/* ─ Trust cards ──────────────────────────────────────────────────── */
+.m-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+  align-items: start;
+}
+.m-trust-art { display: block; width: 100%; height: 168px; object-fit: contain; object-position: center bottom; }
+.m-trust-card h3 {
+  font-family: 'Lora', Georgia, serif; font-weight: 500;
+  font-size: 26px; line-height: 1.25; margin: 18px 0 8px; color: var(--m-ink);
+}
+.m-trust-card p {
+  font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.5;
+  color: var(--m-ink-2); margin: 0;
+}
+.m-trust-links {
+  display: flex; flex-wrap: wrap; gap: 12px 32px;
+  margin: 36px 0 0;
+}
+.m-trust-links a {
+  color: var(--m-teal); font-family: 'Manrope', sans-serif;
+  font-weight: 650; font-size: 16px; text-decoration: none;
+}
+.m-trust-links a:hover { text-decoration: underline; }
+.m-trust-links a:focus-visible { outline: 2px solid var(--m-ink); outline-offset: 3px; }
+
+/* ─ Integrations ─────────────────────────────────────────────────── */
+.m-integrations-title { max-width: 16em; margin-bottom: 14px; }
+.m-integrations-lede {
+  font-family: 'Manrope', sans-serif; font-size: 18px; line-height: 1.5;
+  color: var(--m-ink-2); margin: 0; max-width: 36em;
+}
+.m-logo-row {
+  display: flex; flex-wrap: wrap; justify-content: flex-start;
+  align-items: center; gap: 28px 40px;
+  list-style: none; margin: 40px 0 0; padding: 0;
+}
+.m-logo-row li {
+  display: flex; align-items: center; justify-content: center;
+  width: 64px; height: 56px;
+}
+.m-logo-row img {
+  display: block; width: auto; height: 44px; max-width: 56px;
+  object-fit: contain;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
 /* ─ Pillars ──────────────────────────────────────────────────────── */
 .m-pillars {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px;
@@ -250,8 +390,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ─ Evidence ─────────────────────────────────────────────────────── */
 .m-evidence {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start;
 }
+.m-evidence > * { min-width: 0; }
 .m-pullquote {
   font-family: 'Lora', Georgia, serif; font-weight: 500; font-style: italic;
   font-size: 28px; line-height: 1.35; letter-spacing: -0.005em;
@@ -589,7 +730,7 @@ a { color: inherit; text-decoration: none; }
   .m-section-title-managed { font-size: 32px; }
   .m-pillars { grid-template-columns: 1fr; gap: 36px; }
   .m-pillars-4 { grid-template-columns: 1fr; gap: 36px; }
-  .m-evidence { grid-template-columns: 1fr; gap: 36px; }
+  .m-evidence { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .m-ladder { grid-template-columns: 1fr; gap: 36px; }
   .m-footer-grid { grid-template-columns: 1fr 1fr; }
   .m-section-managed { padding: 80px 0; }
@@ -602,6 +743,18 @@ a { color: inherit; text-decoration: none; }
   .m-label-short { display: inline; }
 }
 @media (max-width: 720px) {
+  .m-deleg-btn {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "name mark" "preview preview";
+    align-items: start;
+  }
+  .m-deleg-name { grid-area: name; }
+  .m-deleg-preview { grid-area: preview; }
+  .m-deleg-mark { grid-area: mark; }
+  .m-deleg-duties { columns: 1; }
+  .m-trust-grid { grid-template-columns: 1fr; gap: 32px; }
+  .m-logo-row { justify-content: center; gap: 20px 12px; }
+  .m-logo-row li { width: 30%; }
   /* Nav and header buttons no longer fit side by side; the footer repeats these links. */
   .m-nav { display: none; }
   /* Below this the wide diagram's text gets too small; switch to the tall layout. */
