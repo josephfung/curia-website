@@ -10,11 +10,6 @@ import './hero-stories.css'
 
 const ease = [0.22, 1, 0.36, 1]
 
-function windowCap() {
-  if (typeof window === 'undefined') return 340
-  return window.matchMedia('(max-width: 720px)').matches ? 300 : 340
-}
-
 function Scene({ view, reduced, motionOn }) {
   if (view.surface === 'mail') return <MailScene view={view} reduced={reduced} motionOn={motionOn} />
   if (view.surface === 'signal') return <SignalScene view={view} reduced={reduced} motionOn={motionOn} />
@@ -49,20 +44,18 @@ export default function HeroStories() {
   const direction = directionRef.current
   const slide = seen.current && !state.reducedMotion
   const stackRef = useRef(null)
-  const [frame, setFrame] = useState({ height: null, fade: false })
+  const windowRef = useRef(null)
+  const [fade, setFade] = useState(false)
   useEffect(() => { seen.current = true }, [story.id])
 
   useLayoutEffect(() => {
-    const el = stackRef.current
-    if (!el || state.reducedMotion) return undefined
-    const apply = () => {
-      const full = el.scrollHeight
-      const cap = windowCap()
-      setFrame({ height: Math.min(full, cap), fade: full > cap + 4 })
-    }
+    const stack = stackRef.current
+    const box = windowRef.current
+    if (!stack || !box || state.reducedMotion) return undefined
+    const apply = () => setFade(stack.scrollHeight > box.clientHeight + 4)
     apply()
     const observer = new ResizeObserver(apply)
-    observer.observe(el)
+    observer.observe(stack)
     return () => observer.disconnect()
   }, [story.id, state.beatIndex, state.reducedMotion])
 
@@ -103,8 +96,8 @@ export default function HeroStories() {
         role="tabpanel"
         id={`hero-panel-${story.id}`}
         aria-labelledby={`hero-dot-${story.id}`}
-        className={`hero-window${state.reducedMotion ? ' is-reduced' : ''}${frame.fade ? ' is-fading' : ''}`}
-        style={state.reducedMotion || frame.height == null ? undefined : { height: frame.height }}
+        ref={windowRef}
+        className={`hero-window${state.reducedMotion ? ' is-reduced' : ''}${fade ? ' is-fading' : ''}`}
       >
         <div className="sr-only">
           {transcriptLines(story).map((line) => <p key={line}>{line}</p>)}
