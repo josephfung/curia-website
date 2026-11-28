@@ -30,29 +30,38 @@ const links = [
 
 function BoundaryArt() {
   return (
-    <svg className="m-trust-art" viewBox="0 0 280 150" aria-hidden="true">
-      <rect x="28" y="16" width="224" height="118" rx="12" fill="none" stroke="#265058" strokeWidth="1.5" />
-      <rect x="86" y="42" width="108" height="66" rx="4" fill="#FBF8F3" stroke="#1F1F1F" strokeWidth="1.25" />
-      <path d="M86 60h108" stroke="#265058" strokeWidth="1" />
-      <text x="140" y="90" textAnchor="middle" fontFamily="Lora, Georgia, serif" fontSize="18" fill="#1F1F1F">Yours.</text>
+    <svg className="m-trust-art" viewBox="0 0 320 200" aria-hidden="true">
+      <rect x="78" y="22" width="164" height="156" rx="6" fill="#265058" />
+      <rect x="90" y="34" width="140" height="132" fill="#FBF8F3" />
+      <rect x="108" y="48" width="104" height="52" fill="#E7EFE8" stroke="#265058" strokeWidth="1.25" />
+      <path d="M160 48v52M108 74h104" stroke="#265058" strokeWidth="1.15" />
+      <circle cx="178" cy="62" r="7" fill="#B08A3E" />
+      <rect x="124" y="112" width="72" height="26" rx="2" fill="#1F1F1F" />
+      <text x="160" y="129" textAnchor="middle" fill="#F4EFE6" fontFamily="Lora, Georgia, serif" fontSize="14">Yours.</text>
+      <circle cx="214" cy="126" r="5" fill="#B08A3E" />
+      <rect x="148" y="166" width="24" height="6" fill="#265058" />
     </svg>
   );
 }
 
 function DocumentsArt() {
   const sheets = [
-    { x: 62, y: 12, label: 'Routines' },
-    { x: 74, y: 48, label: 'Preferences' },
-    { x: 86, y: 84, label: 'Permissions' },
+    { y: 16, h: 40, label: 'Routines', fill: '#F4EFE6' },
+    { y: 60, h: 40, label: 'Preferences', fill: '#FBF8F3' },
+    { y: 104, h: 80, label: 'Permissions', fill: '#FFFDF8', front: true },
   ];
   return (
-    <svg className="m-trust-art" viewBox="0 0 280 150" aria-hidden="true">
+    <svg className="m-trust-art" viewBox="0 0 320 200" aria-hidden="true">
       {sheets.map((sheet) => (
         <g key={sheet.label}>
-          <rect x={sheet.x} y={sheet.y} width="148" height="46" rx="3" fill="#FBF8F3" stroke="#1F1F1F" strokeWidth="1.15" />
-          <text x={sheet.x + 14} y={sheet.y + 29} fontFamily="Lora, Georgia, serif" fontSize="16" fill="#1F1F1F">{sheet.label}</text>
+          <rect x="58" y={sheet.y} width="204" height={sheet.h} rx="3" fill={sheet.fill} stroke="#1F1F1F" strokeWidth="1.2" />
+          <text x="76" y={sheet.y + 26} fontFamily="Lora, Georgia, serif" fontSize="16" fill="#1F1F1F">{sheet.label}</text>
+          {sheet.front && (
+            <path d="M76 146h150M76 160h112" stroke="#D9D1C3" strokeWidth="1.3" />
+          )}
         </g>
       ))}
+      <path d="M230 16c10 8 10 16 0 26 12-6 20-6 32 0" fill="none" stroke="#B08A3E" strokeWidth="2.2" />
     </svg>
   );
 }
@@ -60,12 +69,17 @@ function DocumentsArt() {
 function PlaybookArt() {
   const entries = ['Inbox triage', 'Scheduling', 'Meeting prep'];
   return (
-    <svg className="m-trust-art" viewBox="0 0 280 150" aria-hidden="true">
-      <path d="M28 28h108c8 18 8 76 0 96H28V28z" fill="#FBF8F3" stroke="#1F1F1F" strokeWidth="1.15" />
-      <path d="M252 28H144c-8 18-8 76 0 96h108V28z" fill="#F4EFE6" stroke="#1F1F1F" strokeWidth="1.15" />
-      <path d="M140 28v96" stroke="#265058" strokeWidth="1.25" />
+    <svg className="m-trust-art" viewBox="0 0 320 200" aria-hidden="true">
+      <path d="M18 34h128c6 16 8 80 0 132H18V34z" fill="#FBF8F3" stroke="#1F1F1F" strokeWidth="1.2" />
+      <path d="M302 34H174c-6 16-8 80 0 132h128V34z" fill="#F4EFE6" stroke="#1F1F1F" strokeWidth="1.2" />
+      <rect x="156" y="28" width="14" height="144" rx="2" fill="#265058" />
+      <rect x="286" y="16" width="8" height="44" fill="#B08A3E" />
+      <path d="M36 62h86M36 78h74M36 94h82M36 110h64" stroke="#D9D1C3" strokeWidth="1.4" />
       {entries.map((entry, index) => (
-        <text key={entry} x="158" y={58 + index * 26} fontFamily="Lora, Georgia, serif" fontSize="14" fill="#1F1F1F">{entry}</text>
+        <g key={entry}>
+          <circle cx="184" cy={66 + index * 34} r="3.5" fill="#265058" />
+          <text x="194" y={71 + index * 34} fontFamily="Lora, Georgia, serif" fontSize="14" fill="#1F1F1F">{entry}</text>
+        </g>
       ))}
     </svg>
   );
