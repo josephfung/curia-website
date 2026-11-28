@@ -46,7 +46,7 @@ function projectMail(story, beats) {
     surface: 'mail',
     thread: { ...thread, fromLine: nameList(thread.participants) },
     invite,
-    quietRows: thread.expanded ? [] : story.quietRows,
+    quietRows: story.quietRows,
     freshId: beats[beats.length - 1]?.id ?? null,
   }
 }

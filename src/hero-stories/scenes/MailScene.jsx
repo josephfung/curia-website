@@ -29,46 +29,32 @@ function Row({ from, subject, snippet, time, unread }) {
 
 export default function MailScene({ view, reduced, motionOn }) {
   const { thread, invite, quietRows, freshId } = view
-  const expanded = thread.expanded
 
   return (
     <article className="gmail">
-      {!expanded && (
-        <div className="g-list">
-          <Row
-            from={thread.participants[0]}
-            subject={thread.subject}
-            snippet={thread.snippet}
-            time={thread.time}
-            unread={thread.unread}
-          />
-          {quietRows.map((row) => (
-            <Row
-              key={row.id}
-              from={row.from}
-              subject={row.subject}
-              snippet={row.snippet}
-              time={row.time}
-            />
-          ))}
-        </div>
-      )}
-      {expanded && (
-        <div className="g-open">
-          <h2 className="g-title">{thread.subject}</h2>
-          {thread.messages.map((message) => (
-            <Enter key={message.id} fresh={motionOn && message.id === freshId} reduced={reduced}>
-              <div className="g-msg">
-                <Avatar name={message.from} />
-                <div>
-                  <div className="g-from">{message.from}</div>
-                  <p>{message.body}</p>
-                </div>
+      {quietRows.map((row) => (
+        <Row
+          key={row.id}
+          from={row.from}
+          subject={row.subject}
+          snippet={row.snippet}
+          time={row.time}
+        />
+      ))}
+      {thread.messages.map((message) => (
+        <Enter key={message.id} fresh={motionOn && message.id === freshId} reduced={reduced}>
+          <div className="g-msg">
+            {message.id === 'incoming' && <h2 className="g-title g-title-in">{thread.subject}</h2>}
+            <div className="g-msg-row">
+              <Avatar name={message.from} />
+              <div>
+                <div className="g-from">{message.from}</div>
+                <p>{message.body}</p>
               </div>
-            </Enter>
-          ))}
-        </div>
-      )}
+            </div>
+          </div>
+        </Enter>
+      ))}
       {invite && (
         <Enter fresh={motionOn && freshId === 'invite'} reduced={reduced}>
           <div className="g-event">
