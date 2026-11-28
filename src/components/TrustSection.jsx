@@ -67,21 +67,12 @@ function DocumentsArt() {
 }
 
 function PlaybookArt() {
-  const entries = ['Inbox triage', 'Scheduling', 'Meeting prep'];
   return (
-    <svg className="m-trust-art" viewBox="0 0 320 200" aria-hidden="true">
-      <path d="M18 34h128c6 16 8 80 0 132H18V34z" fill="#FBF8F3" stroke="#1F1F1F" strokeWidth="1.2" />
-      <path d="M302 34H174c-6 16-8 80 0 132h128V34z" fill="#F4EFE6" stroke="#1F1F1F" strokeWidth="1.2" />
-      <rect x="156" y="28" width="14" height="144" rx="2" fill="#265058" />
-      <rect x="286" y="16" width="8" height="44" fill="#B08A3E" />
-      <path d="M36 62h86M36 78h74M36 94h82M36 110h64" stroke="#D9D1C3" strokeWidth="1.4" />
-      {entries.map((entry, index) => (
-        <g key={entry}>
-          <circle cx="184" cy={66 + index * 34} r="3.5" fill="#265058" />
-          <text x="194" y={71 + index * 34} fontFamily="Lora, Georgia, serif" fontSize="14" fill="#1F1F1F">{entry}</text>
-        </g>
-      ))}
-    </svg>
+    <img
+      className="m-trust-art m-trust-picture"
+      src="/assets/trust/comes-knowing.png"
+      alt=""
+    />
   );
 }
 
