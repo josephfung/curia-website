@@ -11,17 +11,11 @@ const Hero = () => (
   <section className="m-hero">
     <div className="m-container m-hero-layout">
       <div className="m-hero-copy">
-        <p className="m-hero-kicker">Private, open-source AI executive assistant</p>
-        <h1 className="m-hero-title">It knows when to take it from here.</h1>
+        <h1 className="m-hero-title">The luxury of knowing it’s handled</h1>
         <p className="m-hero-lede">
-          Curia picks up the scheduling thread, keeps an eye on work you’ve handed
-          over, and gets a reply ready when something needs you. You decide when it
-          can act on your behalf.
+          Curia learns your priorities, handles your inbox and calendar, and keeps
+          delegated projects moving. You get room to do your best work.
         </p>
-        <div className="m-hero-actions">
-          <a className="m-cta" href="https://calendly.com/jbfung/curia">Talk to Joseph</a>
-          <a className="m-cta m-cta-ghost" href="https://github.com/josephfung/curia">View on GitHub</a>
-        </div>
       </div>
       <HeroStories />
     </div>
