@@ -45,24 +45,12 @@ function BoundaryArt() {
 }
 
 function DocumentsArt() {
-  const sheets = [
-    { y: 16, h: 40, label: 'Routines', fill: '#F4EFE6' },
-    { y: 60, h: 40, label: 'Preferences', fill: '#FBF8F3' },
-    { y: 104, h: 80, label: 'Permissions', fill: '#FFFDF8', front: true },
-  ];
   return (
-    <svg className="m-trust-art" viewBox="0 0 320 200" aria-hidden="true">
-      {sheets.map((sheet) => (
-        <g key={sheet.label}>
-          <rect x="58" y={sheet.y} width="204" height={sheet.h} rx="3" fill={sheet.fill} stroke="#1F1F1F" strokeWidth="1.2" />
-          <text x="76" y={sheet.y + 26} fontFamily="Lora, Georgia, serif" fontSize="16" fill="#1F1F1F">{sheet.label}</text>
-          {sheet.front && (
-            <path d="M76 146h150M76 160h112" stroke="#D9D1C3" strokeWidth="1.3" />
-          )}
-        </g>
-      ))}
-      <path d="M230 16c10 8 10 16 0 26 12-6 20-6 32 0" fill="none" stroke="#B08A3E" strokeWidth="2.2" />
-    </svg>
+    <img
+      className="m-trust-art m-trust-picture"
+      src="/assets/trust/make-it-yours.png"
+      alt=""
+    />
   );
 }
 
